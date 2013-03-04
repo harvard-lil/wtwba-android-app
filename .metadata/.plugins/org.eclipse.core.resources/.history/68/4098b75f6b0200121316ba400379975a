@@ -1,0 +1,32 @@
+from django.utils.encoding import smart_unicode
+import json
+import httplib
+import urllib
+import urllib2
+import logging
+
+logger = logging.getLogger(__name__)
+
+try:
+    from lil.shelfio.local_settings import *
+except ImportError, e:
+    logger.error('Unable to load local_settings.py:', e)
+
+
+def export_shelf_as_csv(shelf):
+    """Receive a shelf model, return a big string of the csv serialized shelf
+    """
+    
+    #Usernames are unique, so use them instead of a UUID to avoid a DB call    
+    data = {'_id': user.username,
+            'username': user.username}
+    
+    if user.first_name:        
+        data['first_name'] = user.first_name
+        
+    if user.last_name:        
+        data['last_name'] = user.last_name            
+    
+    expand_the_waistband('user', data)
+    
+def export_user-as_csv(user):

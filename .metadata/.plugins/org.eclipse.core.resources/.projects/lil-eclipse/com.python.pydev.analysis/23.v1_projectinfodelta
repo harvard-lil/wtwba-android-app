@@ -1,0 +1,13 @@
+INSTUPlil.shelfio.indexer
+/Users/phillipsm/dev_area/workspace/lil-eclipse/shelfio/lil/shelfio/indexer.py
+INFOS:&&3|1|2|0&&2|3|2|0&&2|4|2|0&&2|5|2|0&&2|6|2|0&&2|7|2|0&&2|8|2|0&&2|9|2|0&&2|10|2|0
+index_shelf=4
+shrink_the_waistband=10
+index_item=5
+lil.shelfio.indexer=2
+unindex_item=9
+expand_the_waistband=6
+logger=1
+unindex_user=7
+index_user=3
+unindex_shelf=8

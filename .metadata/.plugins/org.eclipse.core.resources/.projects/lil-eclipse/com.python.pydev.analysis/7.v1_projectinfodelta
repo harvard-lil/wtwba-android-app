@@ -1,0 +1,10 @@
+INSTUPlil.shelfio.views.api.v1.authorizations
+/Users/phillipsm/dev_area/workspace/lil-eclipse/shelfio/lil/shelfio/views/api/v1/authorizations.py
+INFOS:&&3|1|2|0&&2|3|2|0&&2|4|2|0&&2|5|2|0&&2|6|2|0&&2|7|2|0
+get_and_serialize_tokens=7
+serialize_token=6
+_auth_using_basic_auth=5
+lil.shelfio.views.api.v1.authorizations=2
+logger=1
+api_one_token=4
+api_tokens=3

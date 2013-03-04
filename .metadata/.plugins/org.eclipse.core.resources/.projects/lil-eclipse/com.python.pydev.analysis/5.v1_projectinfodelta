@@ -1,0 +1,12 @@
+INSTUPlil.shelfio.views.api.v1.favorites
+/Users/phillipsm/dev_area/workspace/lil-eclipse/shelfio/lil/shelfio/views/api/v1/favorites.py
+INFOS:&&3|1|2|0&&2|3|2|0&&2|4|2|0&&2|5|2|0&&2|6|2|0&&2|7|2|0&&2|8|2|0&&2|9|2|0
+api_users=7
+api_shelf=4
+_serialize_users=8
+_serialize_shelf=9
+api_user=6
+_bundle_user_shelves=5
+api_shelves=3
+logger=1
+lil.shelfio.views.api.v1.favorites=2

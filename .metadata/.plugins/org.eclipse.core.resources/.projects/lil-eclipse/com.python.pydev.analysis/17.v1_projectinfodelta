@@ -1,0 +1,9 @@
+INSTUPlil.shelfio.views.api.v1.search
+/Users/phillipsm/dev_area/workspace/lil-eclipse/shelfio/lil/shelfio/views/api/v1/search.py
+INFOS:&&3|1|2|0&&2|3|2|0&&2|4|2|0&&2|5|2|0&&2|6|2|0
+package_items=4
+lil.shelfio.views.api.v1.search=2
+package_shelves=5
+logger=1
+package_users=6
+api_search=3

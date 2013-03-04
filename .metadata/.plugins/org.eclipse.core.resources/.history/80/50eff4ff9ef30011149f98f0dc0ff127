@@ -1,0 +1,36 @@
+import json
+from django.db import models
+import urllib
+import urllib2
+
+def index_user(user):
+    """Receive a user model, return it as ElastiSearch friendly JSON
+    """
+
+def index_shelf(shelf):
+    """Receive a shelf model, return it as ElastiSearch friendly JSON
+    """
+
+def index_item(item):
+    """Receive an item model, return it as ElastiSearch friendly JSON
+    """
+    data = {'title': item.title,
+            'link': item.link}
+    
+    expand_the_waistband('item', data)
+
+def expand_the_waistband(index_name, data):
+    """Send to elasticsearch. Expand that elastic waistband"""
+
+    print "indexing an item"
+        
+    url = 'http://hlsl7.law.harvard.edu:9200/shelfio_' + index_name
+
+    req = urllib2.Request(url, data, {'Content-Type': 'application/json'})
+    f = urllib2.urlopen(req)
+    response = f.read()
+    f.close()
+
+    
+    print response
+    #the_page = response.read()

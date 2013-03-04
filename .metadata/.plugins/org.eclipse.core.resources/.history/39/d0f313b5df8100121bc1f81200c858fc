@@ -1,0 +1,35 @@
+package edu.harvad.law.librarylab.wtwba;
+
+import android.os.AsyncTask;
+import android.util.Log;
+import android.widget.TextView;
+
+class RetrieveItemData extends AsyncTask<String, Void, String> {
+
+    @Override
+    protected String doInBackground(String... params) {
+        try {
+            Thread.sleep(5000); // no need for a loop
+        } catch (InterruptedException e) {
+            Log.e("LongOperation", "Interrupted", e);
+            return "Interrupted";
+        }
+        return "Executed";
+    }      
+
+    @Override
+    protected void onPostExecute(String result) {
+    	
+    	// Create the text view
+   	    TextView textView = new TextView(this);
+   	    textView.setTextSize(40);
+   	    textView.setText(message);
+
+   	    // Set the text view as the activity layout
+   	    setContentView(textView);
+    	
+        //TextView txt = (TextView) findViewById(R.id.output);
+        //txt.setText(result);
+    	//return result;
+    }
+}

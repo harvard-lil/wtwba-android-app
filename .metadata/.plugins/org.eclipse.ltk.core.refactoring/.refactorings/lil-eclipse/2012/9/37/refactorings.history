@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Rename resource &apos;lil-eclipse/shelfio/lil/shelfio/shelfroulette&apos; to &apos;roulette&apos;" description="Rename resource &apos;shelfroulette&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="shelfio/lil/shelfio/shelfroulette" name="roulette" stamp="1347302193453" updateReferences="true"/>&#x0A;<refactoring comment="Rename resource &apos;lil-eclipse/shelfio/lil/shelfio/roulette&apos; to &apos;roulette.py&apos;" description="Rename resource &apos;roulette&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="shelfio/lil/shelfio/roulette" name="roulette.py" stamp="1347304253826" updateReferences="true"/>
+</session>

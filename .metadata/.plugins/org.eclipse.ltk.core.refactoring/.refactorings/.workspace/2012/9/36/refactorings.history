@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete resource &apos;lil-eclipse/shelfio/lil/shelfio/search.py&apos;" deleteContents="false" description="Delete resource &apos;lil-eclipse/shelfio/lil/shelfio/search.py&apos;" element1="/lil-eclipse/shelfio/lil/shelfio/search.py" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1346956256623"/>
+</session>

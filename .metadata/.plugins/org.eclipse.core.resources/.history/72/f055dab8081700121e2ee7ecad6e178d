@@ -1,0 +1,83 @@
+import json
+
+from django.utils import unittest
+from django.contrib.auth.models import User
+from django.test.client import Client
+from django.core.urlresolvers import reverse
+from lil.shelfio.models import Shelf, AuthTokens, FavoriteShelf 
+
+class FavoritesAPITestCase(unittest.TestCase):
+    """Test the Shelf API
+    """
+    def setUp(self):
+        self.client = Client(enforce_csrf_checks=False)
+        
+        # Create our first user
+        self.client.post(reverse('process_register'), {'username': 'testuser1', 'email': 'testuser1@example.com', 'password': 'testpass'})
+        self.client.login(username='testuser1', password='testpass')
+        self.assertTrue('_auth_user_id' in self.client.session)
+
+        # Get the user created in setup
+        self.user_1 = User.objects.get(username='testuser1')
+
+        # each user gets a shelf and an auth token at user creation time.
+        self.misc_shelf_1 = Shelf.objects.get(user=self.user_1, name='Misc')
+        self.auth_tokens_1 = AuthTokens.objects.get(user=self.user_1)
+        
+        # Create a our second user
+        self.client.post(reverse('process_register'), {'username': 'testuser2', 'email': 'testuser2@example.com', 'password': 'testpass'})
+        self.client.login(username='testuser2', password='testpass')
+        self.assertTrue('_auth_user_id' in self.client.session)
+
+        # Get the user created in setup
+        self.user_2 = User.objects.get(username='testuser2')
+
+        # each user gets a shelf and an auth token at user creation time.
+        self.misc_shelf_2 = Shelf.objects.get(user=self.user_2, name='Misc')
+        self.auth_tokens_2 = AuthTokens.objects.get(user=self.user_2)
+        
+
+    def test_create_fav_shelf(self):
+        """Create a favorite_user using the item api"""
+        
+        print self.user_1.username
+        
+        # user 1 favorites user 2's misc shelf
+        self.client.post(reverse('favorites_api_shelves', kwargs={'user_name': self.user_1.username}), {'shelf_id': str(self.misc_shelf_2.shelf_uuid), 'access_token': str(self.auth_tokens_1.token)})
+
+        user_1_favorites = FavoriteShelf.objects.get(user=self.user_1)
+        
+        # Does the favorite exist in the db??
+        self.assertEqual(user_1_favorites.shelf, self.misc_shelf_2)
+        
+    def test_get_all_fav_shelves(self):
+        """Create a favorite_user using the item api"""
+        
+        # user 1 favorites user 2's misc shelf
+        response = self.client.get(reverse('favorites_api_shelves', kwargs={'user_name': self.user_1.username}), {'access_token': str(self.auth_tokens_1.token)})
+
+        user_1_favorites = FavoriteShelf.objects.get(user=self.user_1)
+        
+        shelf_from_get_api = json.loads(str(response.content))
+        self.assertEqual(shelf_from_get_api['docs'][0]['name'], 'Misc')
+        self.assertEqual(shelf_from_get_api['num'], 1)
+
+
+    def test_delete_fav_shelf(self):
+        """Delete a favorite_user using the item api"""
+        
+        # user 1 favorites user 2's misc shelf
+        #self.client.post(reverse('api_favorite_shelf_create'), {'shelf_id': str(self.misc_shelf_2.shelf_uuid), 'access_token': str(self.auth_tokens_1.token)})
+
+        #user_1_favorites = FavoriteShelf.objects.get(user=self.user_1)
+        
+        # Does the favorite exist in the db??
+        #self.assertEqual(user_1_favorites.shelf, self.misc_shelf_2)
+        
+        #response = self.client.post(reverse('api_favorite_shelf_create'), {'_method': 'DELETE', 'shelf_id': str(self.misc_shelf_2.shelf_uuid), 'access_token': str(self.auth_tokens_1.token)})
+        
+        #favorite_shelves = FavoriteShelf.objects.filter(user=self.user_1)
+
+        #self.assertEqual(len(favorite_shelves), 0)
+        #self.assertEqual(204, response.status_code)
+        pass

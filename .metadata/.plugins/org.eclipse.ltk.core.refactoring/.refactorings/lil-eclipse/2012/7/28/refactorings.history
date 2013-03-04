@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;lil-eclipse/shlvme/lil/shlvme/templates/privacy&apos; to &apos;privacy.html&apos;" description="Rename resource &apos;privacy&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="shlvme/lil/shlvme/templates/privacy" name="privacy.html" stamp="1341863130471" updateReferences="true"/>
+</session>

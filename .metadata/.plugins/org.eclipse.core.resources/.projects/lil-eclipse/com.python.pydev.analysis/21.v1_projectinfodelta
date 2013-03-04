@@ -1,0 +1,10 @@
+INSTUPlil.shelfio.local_settings
+/Users/phillipsm/dev_area/workspace/lil-eclipse/shelfio/lil/shelfio/local_settings.py
+INFOS:&&3|1|2|0&&3|3|2|0&&3|4|2|0&&3|5|2|0&&3|6|2|0&&3|7|2|0
+AMZ=1
+WORLDCAT=5
+ELASTICSEARCH=6
+GOODREADS=3
+SHELFIO_API=7
+LIBRARYTHING=4
+lil.shelfio.local_settings=2

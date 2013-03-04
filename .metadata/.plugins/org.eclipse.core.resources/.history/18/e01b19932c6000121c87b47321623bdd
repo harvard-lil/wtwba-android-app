@@ -1,0 +1,53 @@
+import random
+import string
+import hashlib
+
+from django.db import models
+from django import forms
+from django.contrib.auth.models import User
+from django.forms.widgets import TextInput
+from django.template.defaultfilters import slugify
+from django.core.exceptions import ValidationError
+from django.db.models.signals import post_save
+
+
+class Item(models.Model):
+    
+    title = models.CharField(max_length=200)
+    link = models.URLField(max_length=2000)
+    measurement_page_numeric = models.PositiveIntegerField(default=300)
+    measurement_height_numeric = models.DecimalField(default='25.5', max_digits=5, decimal_places=2)
+    format = models.CharField(max_length=200, default='book')
+    shelfrank = models.PositiveIntegerField(default=random.randint(1, 99))
+    creation_date = models.DateTimeField(auto_now=True)
+    pub_date = models.PositiveIntegerField(default=utils.get_current_year())
+    isbn = models.CharField(max_length=200, null=True, blank=True)
+    notes = models.CharField(max_length=2000, null=True, blank=True)
+    sort_order = models.PositiveIntegerField(editable=False) 
+
+    def __unicode__(self):
+        return self.title
+
+
+{"title":"\"Surely you're joking, Mr. Feynman!\": adventures of a curious character",
+"creator":"Richard Phillips Feynman",
+"isbn":"0393316041",
+"hollis_id":"009835578",
+"library":"Lamont",
+"format":"book",
+"last_modified":1357830135,
+"awesomed":1}
+
+checked_in
+
+"hollis_id":"009835578",
+"checked_in":1357830135
+
+# what services do we need to support?
+# recently awesome: given an org, a branch, and a media type, return list of items sorted by date
+# most awesome: given an org, a branch, and a media type, return list of items sorted by most check ins
+
+class Item(models.Model):
+    title = models.CharField(max_length=400)
+    creator = models.CharField(max_length=400)
+    isbn = models.CharField(max_length=20)
