@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workbench progressCount="45" version="2.0">
+<workbench progressCount="24" version="2.0">
 <workbenchAdvisor/>
-<window height="1035" width="1888" x="14" y="23">
+<window height="1035" width="1888" x="14" y="33">
 <fastViewData fastViewLocation="1024">
 <orientation position="512" view="org.eclipse.ui.views.ResourceNavigator"/>
 </fastViewData>
@@ -18,8 +18,8 @@
 <coolItem id="com.python.pydev.navigate.actionSet" itemType="typeToolBarContribution" x="32" y="22"/>
 <coolItem id="org.eclipse.debug.ui.launchActionSet" itemType="typeToolBarContribution" x="100" y="22"/>
 <coolItem id="org.eclipse.jdt.ui.JavaElementCreationActionSet" itemType="typeToolBarContribution" x="62" y="22"/>
-<coolItem id="org.eclipse.search.searchActionSet" itemType="typeToolBarContribution" x="84" y="22"/>
-<coolItem id="org.eclipse.ui.edit.text.actionSet.presentation" itemType="typeToolBarContribution" x="54" y="22"/>
+<coolItem id="org.eclipse.search.searchActionSet" itemType="typeToolBarContribution" x="106" y="22"/>
+<coolItem id="org.eclipse.ui.edit.text.actionSet.presentation" itemType="typeToolBarContribution" x="120" y="22"/>
 <coolItem id="org.eclipse.wst.xml.ui.perspective.NewFileToolBar" itemType="typeToolBarContribution" x="-1" y="-1"/>
 <coolItem id="org.eclipse.wst.xml.ui.design.DesignToolBar" itemType="typeToolBarContribution" x="54" y="22"/>
 <coolItem id="group.nav" itemType="typeGroupMarker"/>
@@ -28,10 +28,10 @@
 <coolItem id="org.eclipse.jdt.ui.ClassFileEditor" itemType="typePlaceholder" x="-1" y="-1"/>
 <coolItem id="org.eclipse.jdt.ui.PropertiesFileEditor" itemType="typePlaceholder" x="-1" y="-1"/>
 <coolItem id="org.eclipse.wst.xml.ui.internal.tabletree.XMLMultiPageEditorPart" itemType="typePlaceholder" x="-1" y="-1"/>
-<coolItem id="com.android.ide.eclipse.editors.CommonXmlEditor" itemType="typePlaceholder" x="-1" y="-1"/>
-<coolItem id="org.eclipse.jdt.ui.CompilationUnitEditor" itemType="typePlaceholder" x="-1" y="-1"/>
+<coolItem id="com.android.ide.eclipse.editors.CommonXmlEditor" itemType="typeToolBarContribution" x="-1" y="-1"/>
+<coolItem id="org.eclipse.jdt.ui.CompilationUnitEditor" itemType="typeToolBarContribution" x="-1" y="-1"/>
 <coolItem id="org.eclipse.ui.browser.editor" itemType="typePlaceholder" x="-1" y="-1"/>
-<coolItem id="org.eclipse.ui.DefaultTextEditor" itemType="typePlaceholder" x="-1" y="-1"/>
+<coolItem id="org.eclipse.ui.DefaultTextEditor" itemType="typeToolBarContribution" x="-1" y="-1"/>
 <coolItem id="org.python.pydev.editor.PythonEditor" itemType="typePlaceholder" x="-1" y="-1"/>
 <coolItem id="group.help" itemType="typeGroupMarker"/>
 <coolItem id="org.eclipse.ui.workbench.help" itemType="typeToolBarContribution" x="-1" y="-1"/>
@@ -41,10 +41,66 @@
 <editorArea activeWorkbook="DefaultEditorWorkbook">
 <info part="DefaultEditorWorkbook">
 <folder appearance="1" expanded="2">
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
+<part id="1"/>
+<part id="2"/>
+<part id="3"/>
+<part id="4"/>
+<part id="5"/>
+<part id="8"/>
+<part id="6"/>
+<part id="7"/>
+<part id="9"/>
+<part id="10"/>
+<part id="11"/>
+</presentation>
 </folder>
 </info>
 </editorArea>
+<editor id="com.android.ide.eclipse.editors.manifest.ManifestEditor" name="AndroidManifest.xml" partName="wtwba Manifest" path="/Users/phillipsm/dev_area/workspace/wtwba/AndroidManifest.xml" title="wtwba Manifest" tooltip="wtwba/AndroidManifest.xml" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/wtwba/AndroidManifest.xml"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ScanActivity.java" partName="ScanActivity.java" path="/Users/phillipsm/dev_area/workspace/wtwba/src/edu/harvad/law/librarylab/wtwba/ScanActivity.java" title="ScanActivity.java" tooltip="wtwba/src/edu/harvad/law/librarylab/wtwba/ScanActivity.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/wtwba/src/edu/harvad/law/librarylab/wtwba/ScanActivity.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="2178" selectionTopPixel="114"/>
+</editor>
+<editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="MainActivity.java" partName="MainActivity.java" path="/Users/phillipsm/dev_area/workspace/wtwba/src/edu/harvad/law/librarylab/wtwba/MainActivity.java" title="MainActivity.java" tooltip="wtwba/src/edu/harvad/law/librarylab/wtwba/MainActivity.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/wtwba/src/edu/harvad/law/librarylab/wtwba/MainActivity.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="4446" selectionTopPixel="1815"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="DisplayItemDetailsActivity.java" partName="DisplayItemDetailsActivity.java" path="/Users/phillipsm/dev_area/workspace/wtwba/src/edu/harvad/law/librarylab/wtwba/DisplayItemDetailsActivity.java" title="DisplayItemDetailsActivity.java" tooltip="wtwba/src/edu/harvad/law/librarylab/wtwba/DisplayItemDetailsActivity.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/wtwba/src/edu/harvad/law/librarylab/wtwba/DisplayItemDetailsActivity.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="34" selectionOffset="1482" selectionTopPixel="0"/>
+</editor>
+<editor id="com.android.ide.eclipse.editors.CommonXmlEditor" name="activity_item_details.xml" partName="activity_item_details.xml" path="/Users/phillipsm/dev_area/workspace/wtwba/res/layout/activity_item_details.xml" title="activity_item_details.xml" tooltip="wtwba/res/layout/activity_item_details.xml" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/wtwba/res/layout/activity_item_details.xml"/>
+</editor>
+<editor id="com.android.ide.eclipse.editors.CommonXmlEditor" name="activity_main.xml" partName="activity_main.xml" path="/Users/phillipsm/dev_area/workspace/wtwba/res/layout/activity_main.xml" title="activity_main.xml" tooltip="wtwba/res/layout/activity_main.xml" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/wtwba/res/layout/activity_main.xml"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="DatabaseHandler.java" partName="DatabaseHandler.java" path="/Users/phillipsm/dev_area/workspace/wtwba/src/edu/harvad/law/librarylab/wtwba/DatabaseHandler.java" title="DatabaseHandler.java" tooltip="wtwba/src/edu/harvad/law/librarylab/wtwba/DatabaseHandler.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/wtwba/src/edu/harvad/law/librarylab/wtwba/DatabaseHandler.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="3340" selectionTopPixel="1185"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Entry.java" partName="Entry.java" path="/Users/phillipsm/dev_area/workspace/wtwba/src/edu/harvad/law/librarylab/wtwba/Entry.java" title="Entry.java" tooltip="wtwba/src/edu/harvad/law/librarylab/wtwba/Entry.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/wtwba/src/edu/harvad/law/librarylab/wtwba/Entry.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="166" selectionOffset="600" selectionTopPixel="0"/>
+</editor>
+<editor id="com.android.ide.eclipse.editors.CommonXmlEditor" name="activity_main_header.xml" partName="activity_main_header.xml" path="/Users/phillipsm/dev_area/workspace/wtwba/res/layout/activity_main_header.xml" title="activity_main_header.xml" tooltip="wtwba/res/layout/activity_main_header.xml" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/wtwba/res/layout/activity_main_header.xml"/>
+</editor>
+<editor id="org.eclipse.ui.DefaultTextEditor" name="MessageDetails.java" partName="MessageDetails.java" path="/Users/phillipsm/dev_area/workspace/wtwba/src/edu/harvad/law/librarylab/wtwba/MessageDetails.java" title="MessageDetails.java" tooltip="wtwba/src/edu/harvad/law/librarylab/wtwba/MessageDetails.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/wtwba/src/edu/harvad/law/librarylab/wtwba/MessageDetails.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="41" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="CustomAdapter.java" partName="CustomAdapter.java" path="/Users/phillipsm/dev_area/workspace/wtwba/src/edu/harvad/law/librarylab/wtwba/CustomAdapter.java" title="CustomAdapter.java" tooltip="wtwba/src/edu/harvad/law/librarylab/wtwba/CustomAdapter.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/wtwba/src/edu/harvad/law/librarylab/wtwba/CustomAdapter.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="40" selectionTopPixel="0"/>
+</editor>
+<editor id="com.android.ide.eclipse.editors.CommonXmlEditor" name="activity_main_menu.xml" partName="activity_main_menu.xml" path="/Users/phillipsm/dev_area/workspace/wtwba/res/menu/activity_main_menu.xml" title="activity_main_menu.xml" tooltip="wtwba/res/menu/activity_main_menu.xml" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/wtwba/res/menu/activity_main_menu.xml"/>
+</editor>
 </editors>
 <views>
 <view id="com.android.ide.eclipse.ddms.views.LogCatView" partName="LogCat">
@@ -77,7 +133,7 @@
 <view id="org.eclipse.ui.views.ProblemView" partName="Problems">
 <viewState PRIMARY_SORT_FIELD="org.eclipse.ui.ide.severityAndDescriptionField" categoryGroup="org.eclipse.ui.ide.severity" markerContentGenerator="org.eclipse.ui.ide.problemsGenerator" partName="Problems">
 <expanded>
-<category IMemento.internal.id="Warnings (5 items)"/>
+<category IMemento.internal.id="Warnings (13 items)"/>
 </expanded>
 <columnWidths org.eclipse.ui.ide.locationField="90" org.eclipse.ui.ide.markerType="90" org.eclipse.ui.ide.pathField="120" org.eclipse.ui.ide.resourceField="90" org.eclipse.ui.ide.severityAndDescriptionField="300"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.severityAndDescriptionField"/>
@@ -123,6 +179,7 @@
 <expanded IMemento.internal.id="/Users/phillipsm/dev_area/workspace/wtwba"/>
 <expanded IMemento.internal.id="/Users/phillipsm/dev_area/workspace/wtwba/res"/>
 <expanded IMemento.internal.id="/Users/phillipsm/dev_area/workspace/wtwba/res/layout"/>
+<expanded IMemento.internal.id="/Users/phillipsm/dev_area/workspace/wtwba/res/menu"/>
 <expanded IMemento.internal.id="/Users/phillipsm/dev_area/workspace/wtwba/res/values"/>
 <expanded IMemento.internal.id="/Users/phillipsm/dev_area/workspace/wtwba/res/values-v11"/>
 <expanded IMemento.internal.id="/Users/phillipsm/dev_area/workspace/wtwba/res/values-v14"/>
@@ -132,10 +189,11 @@
 <expanded IMemento.internal.id="/Users/phillipsm/dev_area/workspace/wtwba/src/edu/harvad/law"/>
 <expanded IMemento.internal.id="/Users/phillipsm/dev_area/workspace/wtwba/src/edu/harvad/law/librarylab"/>
 <expanded IMemento.internal.id="/Users/phillipsm/dev_area/workspace/wtwba/src/edu/harvad/law/librarylab/wtwba"/>
+<selected IMemento.internal.id="/Users/phillipsm/dev_area/workspace/wtwba/res/menu/activity_main_menu.xml"/>
 </viewState>
 </view>
 </views>
-<perspectives activePart="org.python.pydev.navigator.view" activePerspective="org.python.pydev.ui.PythonPerspective">
+<perspectives activePart="org.eclipse.jdt.ui.CompilationUnitEditor" activePerspective="org.python.pydev.ui.PythonPerspective">
 <perspective editorAreaTrimState="2" editorAreaVisible="1" fixed="0" version="0.016">
 <descriptor class="org.eclipse.jdt.internal.ui.JavaPerspectiveFactory" id="org.eclipse.jdt.ui.JavaPerspective" label="Java"/>
 <alwaysOnActionSet id="org.eclipse.egit.ui.navigation"/>
@@ -359,7 +417,7 @@
 </folder>
 </info>
 <info folder="true" part="org.eclipse.ui.internal.ViewStack@54c43f50" ratio="0.4996587" ratioLeft="732" ratioRight="733" relationship="2" relative="org.eclipse.ui.editorss">
-<folder appearance="2" expanded="0">
+<folder appearance="2" expanded="2">
 <page content="com.android.ide.eclipse.ddms.views.LogCatView" label="LabelNotFound"/>
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
 </folder>
@@ -369,7 +427,134 @@
 </perspective>
 </perspectives>
 <workingSets/>
-<navigationHistory/>
+<navigationHistory>
+<editors>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/wtwba/src/edu/harvad/law/librarylab/wtwba/MainActivity.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/wtwba/src/edu/harvad/law/librarylab/wtwba/DisplayItemDetailsActivity.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" path="/wtwba/res/layout/activity_item_details.xml"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" path="/wtwba/res/layout/activity_main.xml"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" path="/wtwba/res/layout/list_item_message.xml"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" path="/wtwba/src/edu/harvad/law/librarylab/wtwba/MessageDetailsjava"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" path="/wtwba/src/edu/harvad/law/librarylab/wtwba/MessageDetails.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/wtwba/src/edu/harvad/law/librarylab/wtwba/CustomAdapter.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" path="/wtwba/res/layout/activity_main_menu.xml"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="" path="/wtwba/res/layout/activity_main.xml"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" path="/wtwba/res/menu/activity_main_menu.xml"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" path="/wtwba/res/layout/activity_main_header.xml"/>
+</editors>
+<item historyLabel="list_item_message.xml" index="4"/>
+<item historyLabel="MessageDetailsjava" index="5">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="MessageDetails.java" index="6">
+<position info="not_deleted" x="1118" y="0"/>
+</item>
+<item historyLabel="activity_item_details.xml" index="2"/>
+<item historyLabel="DisplayItemDetailsActivity.java" index="1">
+<position info="not_deleted" x="0" y="41"/>
+</item>
+<item historyLabel="MessageDetails.java" index="6">
+<position info="not_deleted" x="41" y="0"/>
+</item>
+<item historyLabel="CustomAdapter.java" index="7">
+<position info="not_deleted" x="1937" y="0"/>
+</item>
+<item historyLabel="MainActivity.java" index="0">
+<position info="not_deleted" x="0" y="40"/>
+</item>
+<item historyLabel="CustomAdapter.java" index="7">
+<position info="not_deleted" x="40" y="0"/>
+</item>
+<item historyLabel="MainActivity.java" index="0">
+<position info="not_deleted" x="1043" y="0"/>
+</item>
+<item historyLabel="activity_main.xml" index="3"/>
+<item historyLabel="MainActivity.java" index="0">
+<position info="not_deleted" x="1043" y="0"/>
+</item>
+<item historyLabel="MainActivity.java" index="0">
+<position info="not_deleted" x="505" y="0"/>
+</item>
+<item historyLabel="MainActivity.java" index="0">
+<position info="not_deleted" x="439" y="12"/>
+</item>
+<item historyLabel="MainActivity.java" index="0">
+<position/>
+</item>
+<item historyLabel="MainActivity.java" index="0">
+<position info="not_deleted" x="5224" y="0"/>
+</item>
+<item historyLabel="MainActivity.java" index="0">
+<position/>
+</item>
+<item historyLabel="MainActivity.java" index="0">
+<position info="not_deleted" x="1224" y="0"/>
+</item>
+<item historyLabel="DisplayItemDetailsActivity.java" index="1">
+<position info="not_deleted" x="1482" y="34"/>
+</item>
+<item historyLabel="MainActivity.java" index="0">
+<position info="not_deleted" x="1224" y="0"/>
+</item>
+<item historyLabel="MainActivity.java" index="0">
+<position info="not_deleted" x="5222" y="0"/>
+</item>
+<item historyLabel="MainActivity.java" index="0">
+<position info="not_deleted" x="865" y="0"/>
+</item>
+<item historyLabel="activity_main_menu.xml" index="8"/>
+<item historyLabel="activity_main.xml" index="3"/>
+<item historyLabel="MainActivity.java" index="0">
+<position info="not_deleted" x="909" y="0"/>
+</item>
+<item historyLabel="activity_main.xml" index="3">
+<position/>
+</item>
+<item historyLabel="activity_main.xml" index="9">
+<position info="not_deleted" x="280" y="0"/>
+</item>
+<item historyLabel="activity_main_menu.xml" index="8"/>
+<item historyLabel="MainActivity.java" index="0">
+<position info="not_deleted" x="864" y="0"/>
+</item>
+<item historyLabel="activity_main_menu.xml" index="8"/>
+<item historyLabel="MainActivity.java" index="0">
+<position info="not_deleted" x="550" y="0"/>
+</item>
+<item historyLabel="activity_main_menu.xml" index="10"/>
+<item historyLabel="MainActivity.java" index="0">
+<position info="not_deleted" x="1497" y="0"/>
+</item>
+<item historyLabel="activity_main.xml" index="3"/>
+<item historyLabel="activity_item_details.xml" index="2"/>
+<item historyLabel="activity_main_menu.xml" index="10"/>
+<item historyLabel="MainActivity.java" index="0">
+<position info="not_deleted" x="4698" y="8"/>
+</item>
+<item historyLabel="activity_main_menu.xml" index="10"/>
+<item historyLabel="MainActivity.java" index="0">
+<position info="not_deleted" x="4037" y="0"/>
+</item>
+<item historyLabel="activity_main_header.xml" index="11"/>
+<item historyLabel="activity_main_menu.xml" index="10"/>
+<item historyLabel="MainActivity.java" index="0">
+<position info="not_deleted" x="4621" y="0"/>
+</item>
+<item historyLabel="activity_main_menu.xml" index="10"/>
+<item historyLabel="activity_item_details.xml" index="2"/>
+<item historyLabel="activity_main_menu.xml" index="10"/>
+<item historyLabel="MainActivity.java" index="0">
+<position info="not_deleted" x="4465" y="17"/>
+</item>
+<item historyLabel="activity_main_menu.xml" index="10"/>
+<item historyLabel="MainActivity.java" index="0">
+<position info="not_deleted" x="4498" y="8"/>
+</item>
+<item historyLabel="activity_main_menu.xml" index="10"/>
+<item active="true" historyLabel="MainActivity.java" index="0">
+<position info="not_deleted" x="4498" y="8"/>
+</item>
+</navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
 </page>
 <workbenchWindowAdvisor/>
@@ -392,50 +577,50 @@
 </trimLayout>
 </window>
 <mruList>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" name="activity_main_menu.xml" tooltip="wtwba/res/menu/activity_main_menu.xml">
+<persistable path="/wtwba/res/menu/activity_main_menu.xml"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" name="activity_main_menu.xml" tooltip="wtwba/res/layout/activity_main_menu.xml">
+<persistable path="/wtwba/res/layout/activity_main_menu.xml"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="CustomAdapter.java" tooltip="wtwba/src/edu/harvad/law/librarylab/wtwba/CustomAdapter.java">
+<persistable path="/wtwba/src/edu/harvad/law/librarylab/wtwba/CustomAdapter.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" name="MessageDetailsjava" tooltip="wtwba/src/edu/harvad/law/librarylab/wtwba/MessageDetailsjava">
+<persistable path="/wtwba/src/edu/harvad/law/librarylab/wtwba/MessageDetailsjava"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" name="list_item_message.xml" tooltip="wtwba/res/layout/list_item_message.xml">
+<persistable path="/wtwba/res/layout/list_item_message.xml"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" name="activity_main_header.xml" tooltip="wtwba/res/layout/activity_main_header.xml">
+<persistable path="/wtwba/res/layout/activity_main_header.xml"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" name="list_item.xml" tooltip="wtwba/res/layout/list_item.xml">
+<persistable path="/wtwba/res/layout/list_item.xml"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Entry.java" tooltip="wtwba/src/edu/harvad/law/librarylab/wtwba/Entry.java">
+<persistable path="/wtwba/src/edu/harvad/law/librarylab/wtwba/Entry.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="DatabaseHandler.java" tooltip="wtwba/src/edu/harvad/law/librarylab/wtwba/DatabaseHandler.java">
+<persistable path="/wtwba/src/edu/harvad/law/librarylab/wtwba/DatabaseHandler.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Item.java" tooltip="wtwba/src/edu/harvad/law/librarylab/wtwba/Item.java">
+<persistable path="/wtwba/src/edu/harvad/law/librarylab/wtwba/Item.java"/>
+</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" name="strings.xml" tooltip="wtwba/res/values/strings.xml">
 <persistable path="/wtwba/res/values/strings.xml"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.manifest.ManifestEditor" name="AndroidManifest.xml" tooltip="wtwba/AndroidManifest.xml">
-<persistable path="/wtwba/AndroidManifest.xml"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="RetrieveItemData.java" tooltip="wtwba/src/edu/harvad/law/librarylab/wtwba/RetrieveItemData.java">
-<persistable path="/wtwba/src/edu/harvad/law/librarylab/wtwba/RetrieveItemData.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" name="activity_item_details.xml" tooltip="wtwba/res/layout/activity_item_details.xml">
-<persistable path="/wtwba/res/layout/activity_item_details.xml"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ScanActivity.java" tooltip="wtwba/src/edu/harvad/law/librarylab/wtwba/ScanActivity.java">
-<persistable path="/wtwba/src/edu/harvad/law/librarylab/wtwba/ScanActivity.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="DisplayMessageActivity.java" tooltip="wtwba/src/edu/harvad/law/librarylab/wtwba/DisplayMessageActivity.java">
-<persistable path="/wtwba/src/edu/harvad/law/librarylab/wtwba/DisplayMessageActivity.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="AddNewItem.java" tooltip="wtwba/src/edu/harvad/law/librarylab/wtwba/AddNewItem.java">
-<persistable path="/wtwba/src/edu/harvad/law/librarylab/wtwba/AddNewItem.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" name="activity_display_message.xml" tooltip="wtwba/res/layout/activity_display_message.xml">
-<persistable path="/wtwba/res/layout/activity_display_message.xml"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" name="activity_main.xml" tooltip="wtwba/res/layout/activity_main.xml">
 <persistable path="/wtwba/res/layout/activity_main.xml"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.PropertiesFileEditor" name="project.properties" tooltip="wtwba/project.properties">
-<persistable path="/wtwba/project.properties"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" name="activity_item_details.xml" tooltip="wtwba/res/layout/activity_item_details.xml">
+<persistable path="/wtwba/res/layout/activity_item_details.xml"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.systemExternalEditor" name="ic_launcher-web.png" tooltip="wtwba/ic_launcher-web.png">
-<persistable path="/wtwba/ic_launcher-web.png"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" name="activity_display_message.xml" tooltip="wtwba/res/layout/activity_display_message.xml">
+<persistable path="/wtwba/res/layout/activity_display_message.xml"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="MainActivity.java" tooltip="wtwba/src/edu/harvad/law/librarylab/wtwba/MainActivity.java">
-<persistable path="/wtwba/src/edu/harvad/law/librarylab/wtwba/MainActivity.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.python.pydev.editor.PythonEditor" name="local_settings.py" tooltip="awesome/awesome/awesome/local_settings.py">
-<persistable path="/awesome/awesome/awesome/local_settings.py"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" name="landing_default.html" tooltip="awesome/awesome/awesome/templates/landing_default.html">
-<persistable path="/awesome/awesome/awesome/templates/landing_default.html"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" name="landing_org.html" tooltip="awesome/awesome/awesome/templates/landing_org.html">
-<persistable path="/awesome/awesome/awesome/templates/landing_org.html"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="DisplayMessageActivity.java" tooltip="wtwba/src/edu/harvad/law/librarylab/wtwba/DisplayMessageActivity.java">
+<persistable path="/wtwba/src/edu/harvad/law/librarylab/wtwba/DisplayMessageActivity.java"/>
 </file>
 </mruList>
 </workbench>

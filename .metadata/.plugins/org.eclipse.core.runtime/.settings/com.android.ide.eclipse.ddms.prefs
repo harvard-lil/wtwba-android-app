@@ -1,11 +1,10 @@
-#Thu Feb 28 15:18:07 EST 2013
-logcat.view.colsize.Text=779
-logcat.view.colsize.TID=46
-logcat.view.colsize.Level=18
-ddms.logcat.automonitor.userprompt=true
-logcat.view.colsize.Application=171
-logcat.view.colsize.PID=46
-logcat.view.colsize.Tag=143
 ddms.logcat.auotmonitor.level=error
-logcat.view.colsize.Time=140
+ddms.logcat.automonitor.userprompt=true
 eclipse.preferences.version=1
+logcat.view.colsize.Application=171
+logcat.view.colsize.Level=18
+logcat.view.colsize.PID=46
+logcat.view.colsize.TID=46
+logcat.view.colsize.Tag=184
+logcat.view.colsize.Text=779
+logcat.view.colsize.Time=140

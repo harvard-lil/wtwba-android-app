@@ -1,0 +1,38 @@
+package edu.harvad.law.librarylab.wtwba;
+
+public class Item {
+ 
+    //private variables
+    String barcode;
+    String title;
+    // other attributes here
+ 
+    // Empty constructor
+    public Item(){
+ 
+    }
+    // constructor
+    public Item(String barcode, String title){
+        this.barcode = barcode;
+        this.barcode = title;
+    }
+
+	// getting barcode
+    public String get_barcode(){
+        return this.barcode;
+    }
+ 
+    // setting barcode
+    public void set_barcode(String barcode){
+        this.barcode = barcode;
+    }
+    
+    public String get_title() {
+		return title;
+	}
+	public void set_title(String title) {
+		this.title = title;
+	}
+ 
+
+}

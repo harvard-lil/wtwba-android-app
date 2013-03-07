@@ -38,7 +38,7 @@ public class ScanActivity extends Activity {
     	         String format = intent.getStringExtra("SCAN_RESULT_FORMAT");
     	         // Handle successful scan
     	         
-    	         message = "barcode is: " + contents;
+    	         message = contents;
     	    
     	         //Intent rid_intent = new Intent(this, RetrieveItemData.class);
     	         //rid_intent.putExtra("barcode", message);
@@ -55,6 +55,12 @@ public class ScanActivity extends Activity {
     	         //rid_intent.putExtra("barcode", contents);
     	         //startActivityForResult(rid_intent, 0);
     	         
+    	         Intent display_intent = new Intent(this, DisplayItemDetailsActivity.class);
+		    	 display_intent.putExtra("barcode", message);
+		         startActivity(display_intent);
+    	         
+    	         
+    	         
     	      } else if (resultCode == RESULT_CANCELED) {
     	         // Handle cancel	
     	    	  message = "canceled";
@@ -64,8 +70,6 @@ public class ScanActivity extends Activity {
     		   message = "requestcode not 0";
     	   }
     	   
-    	   Intent display_intent = new Intent(this, DisplayMessageActivity.class);
-    	   display_intent.putExtra("barcode", message);
-           startActivity(display_intent);
+    	   
     	}   
 }
