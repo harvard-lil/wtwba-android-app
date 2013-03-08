@@ -2,6 +2,10 @@
 <resources>
 
     <string name="app_name">wtwba</string>
+    <string name="main_activity_title">Wild Books | Home</string>
+    <string name="activity_item_details_title">Wild Books | New Item Details</string>
+    <string name="activity_scan_title">Wild Books | Scan New Item</string>
+    
     <string name="edit_message">Enter a message</string>
     <string name="button_scan">Scan</string>
     <string name="button_add">Add to list</string>

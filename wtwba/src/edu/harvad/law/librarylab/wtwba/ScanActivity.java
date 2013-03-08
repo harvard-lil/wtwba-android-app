@@ -24,6 +24,14 @@ public class ScanActivity extends Activity {
         startActivityForResult(intent, 0);
 
     }
+    
+    @Override
+    public void onResume() {
+    	super.onResume();
+    	Intent intent = new Intent(this, MainActivity.class);
+       startActivity(intent);
+    }
+    
 
     
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
