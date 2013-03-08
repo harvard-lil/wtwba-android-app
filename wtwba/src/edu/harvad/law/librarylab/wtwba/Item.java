@@ -1,5 +1,7 @@
 package edu.harvad.law.librarylab.wtwba;
 
+import android.util.Log;
+
 public class Item {
  
     //private variables
@@ -15,6 +17,7 @@ public class Item {
     }
     // constructor
     public Item(String barcode, String title, String due_date){
+    	Log.w("item container", "barcode: " + barcode + ", title: " + title + ", due_date: " + due_date);
         this.barcode = barcode;
         this.title = title;
         this.due_date = due_date;
@@ -34,8 +37,8 @@ public class Item {
     }
  
     // setting id
-    public void set_id(int incoming_id){
-        this.id = incoming_id;
+    public void set_id(int id){
+        this.id = id;
     }
 
 	// getting barcode
@@ -56,6 +59,7 @@ public class Item {
 	}
 	
 	public String get_due_date() {
+		Log.w("item container", "returning due_date " + this.due_date);
 		return this.due_date;
 	}
 	public void set_due_date(String due_date) {

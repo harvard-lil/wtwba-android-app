@@ -1,0 +1,64 @@
+package edu.harvad.law.librarylab.wtwba;
+
+import java.util.ArrayList;
+
+import android.content.Context;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+public class ItemDetailsListAdapter extends BaseAdapter {
+ 
+    private ArrayList<ItemDetailsInList> _data;
+    Context _c;
+    
+    ItemDetailsListAdapter (ArrayList<ItemDetailsInList> data, Context c){
+        _data = data;
+        _c = c;
+    }
+   
+    public int getCount() {
+        // TODO Auto-generated method stub
+        return _data.size();
+    }
+    
+    public Object getItem(int position) {
+        // TODO Auto-generated method stub
+        return _data.get(position);
+    }
+ 
+    public long getItemId(int position) {
+        // TODO Auto-generated method stub
+        return position;
+    }
+   
+    public View getView(int position, View convertView, ViewGroup parent) {
+        // TODO Auto-generated method stub
+         View v = convertView;
+         if (v == null)
+         {
+            LayoutInflater vi = (LayoutInflater)_c.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            v = vi.inflate(R.layout.list_item_message, null);
+         }
+ 
+           ImageView image = (ImageView) v.findViewById(R.id.icon);
+           TextView titleView = (TextView)v.findViewById(R.id.title);
+           TextView dueView = (TextView)v.findViewById(R.id.due);
+
+           Log.w("idladapter", String.valueOf(_data.size()));
+           ItemDetailsInList junk = _data.get(0);
+           Log.w("idladapter message", junk.title);
+           
+           
+           ItemDetailsInList msg = _data.get(position);
+           image.setImageResource(msg.icon);
+           titleView.setText(msg.title);
+           dueView.setText("Due on: "+msg.due);                      
+                        
+        return v;
+}
+}

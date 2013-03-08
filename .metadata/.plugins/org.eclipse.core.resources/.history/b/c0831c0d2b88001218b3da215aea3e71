@@ -1,0 +1,32 @@
+package edu.harvad.law.librarylab.wtwba;
+
+
+public class ItemDetailsInList {
+            int icon ;
+            String title;
+            String due_date;
+           
+            public int get_icon() {
+                return icon;
+            }
+            
+            public void set_icon(int icon) {
+                this.icon = icon;
+            }
+
+            public String get_title() {
+				return title;
+			}
+
+			public void set_title(String title) {
+				this.title = title;
+			}
+
+			public String get_due_date() {
+				return due_date;
+			}
+
+			public void set_due_date(String due_date) {
+				this.due_date = due_date;
+			}            
+}

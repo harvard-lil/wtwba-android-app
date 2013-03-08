@@ -1,8 +1,10 @@
 package edu.harvad.law.librarylab.wtwba;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import android.app.ListActivity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -18,10 +20,20 @@ import android.widget.ListView;
 public class MainActivity extends ListActivity implements OnItemClickListener {
 
 	public final static String EXTRA_MESSAGE = "edu.harvad.law.librarylab.wtwba.MESSAGE";
-	ListView msgList;
-	ArrayList<MessageDetails> details;
-	AdapterView.AdapterContextMenuInfo info;
-
+	
+	
+	
+	//ListView msgList;
+	//ArrayList<MessageDetails> details;
+	
+	
+	ListView item_list;
+	ArrayList<ItemDetailsInList> items_for_view;
+	
+	
+	
+	//AdapterView.AdapterContextMenuInfo info;
+	DatabaseHandler db;
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -39,10 +51,12 @@ public class MainActivity extends ListActivity implements OnItemClickListener {
 		super.onCreate(savedInstanceState);
 
 
+		 this.db = new DatabaseHandler(this);
 
 
-
-
+		 // DB delete code (for debugging)
+			//Context context = getApplicationContext();
+		   	//context.deleteDatabase("wtwbaManager");
 
 
 
@@ -63,8 +77,7 @@ public class MainActivity extends ListActivity implements OnItemClickListener {
 
 
 
-    	//Context context = getApplicationContext();
-   	//context.deleteDatabase("wtwbaManager");
+    
 
 
 
@@ -115,11 +128,54 @@ public class MainActivity extends ListActivity implements OnItemClickListener {
 
 	@Override
 	public void onResume() {
-		// Draw the list of already checked out itemss
+		// Draw the list of already checked out items
 		super.onResume();
 
 		setContentView(R.layout.activity_main);
 
+		
+		
+		List<Item> items = this.db.get_all_items();
+		
+		items_for_view = new ArrayList<ItemDetailsInList>();
+		
+
+
+
+        for (Item item : items) {
+        	ItemDetailsInList idil = new ItemDetailsInList();
+        	idil.setIcon(R.drawable.ic_launcher);
+        	idil.setTitle(item.get_title());
+        	idil.setDue(item.get_due_date());
+            //items_for_view.add(item.get_title());
+            //Log.w("adding item title to list: ", item.get_title());
+            //Log.w("adding item barcode to list: ", item.get_barcode());
+            //Log.w("adding item due to list: ", item.get_due_date());
+        	items_for_view.add(idil);
+        }
+
+        Log.w("size of view items", String.valueOf(items_for_view.size()));
+
+        //String[] v_ar = new String[this.items_for_view.size()];
+        //v_ar = items_for_view.toArray(v_ar);
+
+
+        item_list = getListView();
+		
+		item_list.setOnItemClickListener(this);
+		
+		item_list.setAdapter(new ItemDetailsListAdapter(items_for_view, this));
+		
+		
+		
+		
+		
+		
+		
+		
+		/*
+		
+		
 		msgList = getListView();//(ListView) findViewById(R.id.android.list);
 
 		msgList.setOnItemClickListener(this);
@@ -151,7 +207,7 @@ public class MainActivity extends ListActivity implements OnItemClickListener {
 		Detail.setTime("13/12/2012 02:12");
 		details.add(Detail);        
 
-		msgList.setAdapter(new CustomAdapter(details , this));
+		msgList.setAdapter(new CustomAdapter(details , this));*/
 	}
 
 
@@ -188,10 +244,9 @@ public class MainActivity extends ListActivity implements OnItemClickListener {
 	@Override
 	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
 		// When a user clicks an item (a book they've already scanned) in the list
-		MessageDetails detail = details.get(arg2);
+		ItemDetailsInList item = items_for_view.get(arg2);
 
-
-		Log.d("from listview: ", detail.getName());
+		Log.d("from listview: ", item.title);
 	}
 
 

@@ -32,7 +32,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     
     // Items table columns names
     private static final String KEY_TITLE = "title";
-    private static final String KEY_ISBN = "isbn";
     private static final String KEY_DUE = "due";
 
  
@@ -50,8 +49,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String CREATE_ITEMS_TABLE = "CREATE TABLE " + TABLE_ITEMS + "("
                 + KEY_ID + " INTEGER PRIMARY KEY," + KEY_BARCODE + " TEXT,"
-                + KEY_TITLE + " TEXT," + KEY_ISBN + " TEXT,"
-                + KEY_DUE + " TEXT" + ")";
+                + KEY_TITLE + " TEXT," + KEY_DUE + " TEXT" + ")";
         db.execSQL(CREATE_ITEMS_TABLE);
         
         String CREATE_EENTRIES_TABLE = "CREATE TABLE " + TABLE_ENTRIES + "("
@@ -84,7 +82,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 //    
 //    // Items table columns names
 //    private static final String KEY_TITLE = "title";
-//    private static final String KEY_ISBN = "isbn";
 //    private static final String KEY_DUE = "due";
     
 	  // Adding new Item
@@ -114,7 +111,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	      if (cursor != null){
 		      cursor.moveToFirst();
 	      }
-	  		Item item = new Item(Integer.parseInt(cursor.getString(0)), cursor.getString(1), cursor.getString(1), cursor.getString(1));
+	  		Item item = new Item(Integer.parseInt(cursor.getString(0)), cursor.getString(1), cursor.getString(2), cursor.getString(3));
 
 	      return item;
 	  }
@@ -136,6 +133,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	      	item.set_barcode(cursor.getString(1));
 	      	item.set_title(cursor.getString(2));
 	      	item.set_due_date(cursor.getString(3));
+	      	Log.w("in handler get all item", cursor.getString(2));
+	      	
 	          // Adding contact to list
 	      	item_list.add(item);
 	      } while (cursor.moveToNext());

@@ -101,7 +101,7 @@ public class DisplayItemDetailsActivity extends Activity {
 				JSONObject myjson = new JSONObject(result);
 				Log.w("title from add", myjson.getString("title"));
 				title = myjson.getString("title");
-				due_date = "placeholder"; //myjson.getString("due");
+				due_date = myjson.getString("due");
 				
 				db.add_item(new Item(this.barcode, title, due_date));
 				
