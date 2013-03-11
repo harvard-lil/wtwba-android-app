@@ -15,6 +15,7 @@ import org.json.JSONObject;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
@@ -24,6 +25,8 @@ import android.widget.TextView;
 
 
 public class DisplayItemDetailsActivity extends Activity {
+	
+	public static final String PREFS_NAME = "MyPrefsFile";
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -74,8 +77,11 @@ public class DisplayItemDetailsActivity extends Activity {
             	String targetURL = "http://librarylab.law.harvard.edu/dev/matt/public/wtwba/add.php";
             	String urlParameters = null;
             	
+            	SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+                String user_name = settings.getString("user_name", "");
+            	
             	try {
-        			urlParameters = "user=" + URLEncoder.encode("mattphillips", "UTF-8") +
+        			urlParameters = "user=" + URLEncoder.encode(user_name, "UTF-8") +
         							"&barcode=" + URLEncoder.encode(this.barcode, "UTF-8");
         		} catch (UnsupportedEncodingException e1) {
         			e1.printStackTrace();
@@ -110,7 +116,7 @@ public class DisplayItemDetailsActivity extends Activity {
 				e.printStackTrace();
 			}
             
-            TextView text_title = (TextView) findViewById(R.id.user_name);
+            TextView text_title = (TextView) findViewById(R.id.title_details);
             text_title.setText(title);
             
             

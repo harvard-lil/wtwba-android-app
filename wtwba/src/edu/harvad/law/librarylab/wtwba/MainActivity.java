@@ -147,6 +147,7 @@ public class MainActivity extends ListActivity implements OnItemClickListener {
         	idil.setIcon(R.drawable.ic_launcher);
         	idil.setTitle(item.get_title());
         	idil.setDue(item.get_due_date());
+        	idil.setBarcode(item.get_barcode());
             //items_for_view.add(item.get_title());
             //Log.w("adding item title to list: ", item.get_title());
             //Log.w("adding item barcode to list: ", item.get_barcode());
@@ -254,7 +255,12 @@ public class MainActivity extends ListActivity implements OnItemClickListener {
 		// When a user clicks an item (a book they've already scanned) in the list
 		ItemDetailsInList item = items_for_view.get(arg2);
 
-		Log.d("from listview: ", item.title);
+		Log.d("from listview: ", item.barcode);
+		
+		Intent intent = new Intent(this, LocationActivity.class);
+		intent.putExtra("barcode", item.barcode);
+		startActivity(intent);
+
 	}
 
 

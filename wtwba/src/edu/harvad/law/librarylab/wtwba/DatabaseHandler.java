@@ -1,8 +1,9 @@
 package edu.harvad.law.librarylab.wtwba;
  
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
- 
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -37,6 +38,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
  
     // entries table columns names
     private static final String KEY_LOCATION = "location";
+    private static final String KEY_DATE = "date";
  
  
     
@@ -54,7 +56,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         
         String CREATE_EENTRIES_TABLE = "CREATE TABLE " + TABLE_ENTRIES + "("
                 + KEY_ID + " INTEGER PRIMARY KEY," + KEY_BARCODE + " TEXT,"
-                + KEY_LOCATION + " TEXT" + ")";
+                + KEY_LOCATION + " TEXT," + KEY_DATE + " TEXT" + ")";
         db.execSQL(CREATE_EENTRIES_TABLE);
     }
  
@@ -188,26 +190,27 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
  
         ContentValues values = new ContentValues();
-        values.put(KEY_BARCODE, entry.get_barcode()); 
-        values.put(KEY_LOCATION, entry.get_location()); 
+        values.put(KEY_BARCODE, entry.get_barcode());
+        values.put(KEY_LOCATION, entry.get_location());
+        values.put(KEY_DATE, entry.getDate().toString());
  
         // Inserting Row
         db.insert(TABLE_ENTRIES, null, values);
         db.close(); // Closing database connection
     }
  
-    // Getting single contact
+    // Getting single entry
     Entry get_entry(int id) {
         SQLiteDatabase db = this.getReadableDatabase();
  
         Cursor cursor = db.query(TABLE_ENTRIES, new String[] { KEY_ID,
-        		KEY_BARCODE, KEY_LOCATION }, KEY_ID + "=?",
+        		KEY_BARCODE, KEY_LOCATION, KEY_DATE }, KEY_ID + "=?",
                 new String[] { String.valueOf(id) }, null, null, null, null);
         if (cursor != null)
             cursor.moveToFirst();
  
-        Entry entry = new Entry(Integer.parseInt(cursor.getString(0)), cursor.getString(1), cursor.getString(1));
-        // return entry
+        Entry entry = new Entry(Integer.parseInt(cursor.getString(0)), cursor.getString(1), cursor.getString(2), Timestamp.valueOf(cursor.getString(3)));
+
         return entry;
     }
  
@@ -227,6 +230,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             	entry.set_id(Integer.parseInt(cursor.getString(0)));
             	entry.set_barcode(cursor.getString(1));
             	entry.set_location(cursor.getString(2));
+            	entry.setDate( Timestamp.valueOf(cursor.getString(3)));
                 // Adding contact to list
                 entry_list.add(entry);
             } while (cursor.moveToNext());

@@ -5,6 +5,7 @@ public class ItemDetailsInList {
             int icon ;
             String title;
             String due;
+            String barcode;
            
             public int getIcon() {
                 return icon;
@@ -28,5 +29,13 @@ public class ItemDetailsInList {
 
 			public void setDue(String due) {
 				this.due = due;
+			}
+
+			public String getBarcode() {
+				return barcode;
+			}
+
+			public void setBarcode(String barcode) {
+				this.barcode = barcode;
 			}            
 }

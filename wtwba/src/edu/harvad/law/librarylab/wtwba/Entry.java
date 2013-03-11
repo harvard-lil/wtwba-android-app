@@ -1,28 +1,34 @@
 package edu.harvad.law.librarylab.wtwba;
 
+import java.sql.Timestamp;
+
 public class Entry {
  
     //private variables
 	int id;
     String barcode;
     String location;
+    Timestamp date;
  
     // Empty constructor
     public Entry(){
  
     }
-    // constructor
-    public Entry(int incoming_id, String incoming_barcode, String incoming_location){
+ // constructor
+    public Entry(int incoming_id,String barcode, String location, Timestamp date){
     	this.id = incoming_id;
-        this.barcode = incoming_barcode;
-        this.location = incoming_location;
+        this.barcode = barcode;
+        this.location = location;
+        this.date = date;
     }
+    
     // constructor
-    public Entry(String incoming_barcode, String incoming_location){
-        this.barcode = incoming_barcode;
-        this.location = incoming_location;
+    public Entry(String barcode, String location, Timestamp date){
+        this.barcode = barcode;
+        this.location = location;
+        this.date = date;
     }
-
+    
     // getting id
     public int get_id(){
         return this.id;
@@ -53,4 +59,12 @@ public class Entry {
     public void set_location(String incoming_location){
         this.location = incoming_location;
     }
+    
+	public Timestamp getDate() {
+		return date;
+	}
+	
+	public void setDate(Timestamp date) {
+		this.date = date;
+	}
 }
