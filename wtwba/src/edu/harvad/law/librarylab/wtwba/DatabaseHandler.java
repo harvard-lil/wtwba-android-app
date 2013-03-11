@@ -159,11 +159,20 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	              new String[] { String.valueOf(contact.getID()) });
 	  }*/
 	
-	  // Deleting single contact
+	  // Deleting single item by id
 	  public void delete_item(Item item) {
 	      SQLiteDatabase db = this.getWritableDatabase();
 	      db.delete(TABLE_ITEMS, KEY_ID + " = ?",
 	              new String[] { String.valueOf(item.get_id()) });
+	      db.close();
+	  }
+	  
+	// Deleting single item by barcode
+	  public void delete_item_by_barcode(String barcode) {
+		  Log.w("db", "trying to delete by barcode");
+	      SQLiteDatabase db = this.getWritableDatabase();
+	      db.delete(TABLE_ITEMS, KEY_BARCODE + " = ?",
+	              new String[] { barcode });
 	      db.close();
 	  }
 	

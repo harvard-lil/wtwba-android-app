@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.app.ListActivity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ListView;
 
 
@@ -164,9 +164,28 @@ public class MainActivity extends ListActivity implements OnItemClickListener {
         item_list = getListView();
 		
 		item_list.setOnItemClickListener(this);
-		
+		item_list.setLongClickable(true);
 		item_list.setAdapter(new ItemDetailsListAdapter(items_for_view, this));
+
 		
+		
+		
+		item_list.setOnItemLongClickListener(new OnItemLongClickListener() {
+
+            public boolean onItemLongClick(AdapterView<?> arg0, View arg1, int pos, long id) {
+        		ItemDetailsInList item = items_for_view.get(pos);
+
+        		Log.w("from lc: ", item.barcode);
+        		
+
+        		Intent intent = new Intent(getBaseContext(), DeleteItemActivity.class);
+        		intent.putExtra("barcode", item.barcode);
+        		intent.putExtra("title", item.title);
+        		startActivity(intent);
+        		
+                return true;
+            }
+        }); 
 		
 		
 		
@@ -262,7 +281,7 @@ public class MainActivity extends ListActivity implements OnItemClickListener {
 		startActivity(intent);
 
 	}
-
+	
 
 	public void onActivityResult(int requestCode, int resultCode, Intent intent) {
 		// When our zxing intent returns, we call this method	

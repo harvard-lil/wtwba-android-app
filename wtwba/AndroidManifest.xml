@@ -63,6 +63,13 @@
 				android:value="edu.harvad.law.librarylab.wtwba.MainActivity" />
 		</activity>
 		
+		<activity android:name=".DeleteItemActivity"
+			android:label="@string/activity_delete_title"
+			>
+			<meta-data android:name="android.support.PARENT_ACTIVITY"
+				android:value="edu.harvad.law.librarylab.wtwba.MainActivity" />
+		</activity>
+		
 	</application>
 
 </manifest>

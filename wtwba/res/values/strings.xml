@@ -9,7 +9,12 @@
     <string name="activity_location_title">Select your current location</string>
     <string name="user_name_box_label">Enter your assigned user key</string>
     <string name="edit_message">Enter a message</string>
+    
+    <string name="button_confirm_delete">Delete from checked-out list</string>
+    <string name="activity_delete_title">Delete an item</string>
+    
     <string name="button_scan">Scan</string>
+    <string name="button_item_confrim">Return home</string>
     <string name="button_add">Add to list</string>
     <string name="button_save_user_name">Save user key</string>
     <string name="menu_settings">Settings</string>
