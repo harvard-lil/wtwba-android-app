@@ -4,8 +4,8 @@
 	<item android:id="@+id/scanButton"
 	    android:title="Add Item"
 	/>
-	<item android:id="@+id/managerUserButton"
-	    android:title="Manager User"/>
+	<item android:id="@+id/manageUserButton"
+	    android:title="Manage User"/>
     
 
 </menu>

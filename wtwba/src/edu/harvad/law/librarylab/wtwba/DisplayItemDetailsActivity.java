@@ -110,7 +110,7 @@ public class DisplayItemDetailsActivity extends Activity {
 				e.printStackTrace();
 			}
             
-            TextView text_title = (TextView) findViewById(R.id.title_details);
+            TextView text_title = (TextView) findViewById(R.id.user_name);
             text_title.setText(title);
             
             

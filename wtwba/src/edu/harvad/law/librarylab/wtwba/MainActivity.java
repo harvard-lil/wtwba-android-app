@@ -220,8 +220,8 @@ public class MainActivity extends ListActivity implements OnItemClickListener {
 		case R.id.scanButton:
 			this.scanCode();
 			return true;
-		case R.id.managerUserButton:
-			this.scanCode();
+		case R.id.manageUserButton:
+			this.manageUser();
 			return true;
 		default:
 			return super.onOptionsItemSelected(item);
@@ -240,6 +240,14 @@ public class MainActivity extends ListActivity implements OnItemClickListener {
 		startActivityForResult(intent, 0);
 	}
 
+	
+	/** Called when the user clicks the manage user button (in the menu)*/
+	public void manageUser() {
+
+		Intent intent = new Intent(this, ManageUserActivity.class);
+		startActivity(intent);
+
+	}
 
 	@Override
 	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {

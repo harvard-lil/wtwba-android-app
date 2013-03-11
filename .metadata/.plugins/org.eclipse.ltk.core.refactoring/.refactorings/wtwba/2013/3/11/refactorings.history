@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;wtwba/res/layout/activity_manager_user.xml&apos; to &apos;activity_manage_user.xml&apos;" description="Rename resource &apos;activity_manager_user.xml&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="res/layout/activity_manager_user.xml" name="activity_manage_user.xml" stamp="1363017748991" updateReferences="true"/>
+</session>
