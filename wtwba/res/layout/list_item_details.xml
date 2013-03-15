@@ -11,23 +11,34 @@
 
         <ImageView
             android:id="@+id/icon"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp" />
+            android:layout_width="50dp"
+            android:layout_height="80dp"
+        android:scaleType="fitXY"
+        android:layout_margin="10dp"
+             
+android:adjustViewBounds="true"/>
 
         <TextView
             android:id="@+id/title_list"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:textColor="#4c11a9"
             android:layout_gravity="center"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="#003366" />
+            android:textAppearance="?android:attr/textAppearanceMedium"/>
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/due_list"
-        android:layout_width="fill_parent"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-         />
+        android:layout_marginRight="5dip"
+        android:orientation="horizontal" >
+	    <TextView
+	        android:id="@+id/due_list"
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:gravity="right"
+	         />
+    </LinearLayout>
     <TextView
         android:id="@+id/barcode_list"
         android:layout_width="fill_parent"

@@ -2,16 +2,18 @@
 <resources>
 
     <string name="app_name">wtwba</string>
-    <string name="main_activity_title">Wild Books | Home</string>
-    <string name="activity_item_details_title">Wild Books | New Item Details</string>
-    <string name="activity_scan_title">Wild Books | Scan New Item</string>
-    <string name="activity_manage_user_title">Wild Books | Manage User</string>
+    <string name="main_activity_title">Where the Wild Books Are</string>
+    <string name="activity_item_details_title">Wild Books</string>
+    <string name="activity_scan_title">Wild Books</string>
+    <string name="activity_manage_user_title">Manage user key</string>
     <string name="activity_location_title">Select your current location</string>
     <string name="user_name_box_label">Enter your assigned user key</string>
     <string name="edit_message">Enter a message</string>
+    <string name="loading_message">Loading</string>
     
-    <string name="button_confirm_delete">Delete from checked-out list</string>
-    <string name="activity_delete_title">Delete an item</string>
+    
+    <string name="button_confirm_delete">Delete from list</string>
+    <string name="activity_delete_title">Delete from list</string>
     
     <string name="button_scan">Scan</string>
     <string name="button_item_confrim">Return home</string>

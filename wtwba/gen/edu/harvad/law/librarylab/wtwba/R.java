@@ -37,11 +37,13 @@ public final class R {
         public static final int standard_padding=0x7f080000;
     }
     public static final class drawable {
-        public static final int ic_action_search=0x7f020000;
-        public static final int ic_launcher=0x7f020001;
-        public static final int launcher_icon=0x7f020002;
-        public static final int share_via_barcode=0x7f020003;
-        public static final int shopper_icon=0x7f020004;
+        public static final int cover_default=0x7f020000;
+        public static final int ic_action_search=0x7f020001;
+        public static final int ic_launcher=0x7f020002;
+        public static final int launcher_icon=0x7f020003;
+        public static final int share_via_barcode=0x7f020004;
+        public static final int shopper_icon=0x7f020005;
+        public static final int wildbooks_logo=0x7f020006;
     }
     public static final class id {
         public static final int From=0x7f090027;
@@ -138,7 +140,7 @@ public final class R {
         public static final int beep=0x7f050000;
     }
     public static final class string {
-        public static final int activity_delete_title=0x7f0a0081;
+        public static final int activity_delete_title=0x7f0a0082;
         public static final int activity_item_details_title=0x7f0a007a;
         public static final int activity_location_title=0x7f0a007d;
         public static final int activity_manage_user_title=0x7f0a007c;
@@ -146,26 +148,26 @@ public final class R {
         public static final int app_name=0x7f0a0000;
         public static final int app_picker_name=0x7f0a0001;
         public static final int bookmark_picker_name=0x7f0a0002;
-        public static final int button_add=0x7f0a0084;
+        public static final int button_add=0x7f0a0085;
         public static final int button_add_calendar=0x7f0a0003;
         public static final int button_add_contact=0x7f0a0004;
         public static final int button_back=0x7f0a0005;
         public static final int button_book_search=0x7f0a0006;
         public static final int button_cancel=0x7f0a0007;
-        public static final int button_confirm_delete=0x7f0a0080;
+        public static final int button_confirm_delete=0x7f0a0081;
         public static final int button_custom_product_search=0x7f0a0008;
         public static final int button_dial=0x7f0a0009;
         public static final int button_done=0x7f0a000a;
         public static final int button_email=0x7f0a000b;
         public static final int button_get_directions=0x7f0a000c;
         public static final int button_google_shopper=0x7f0a000d;
-        public static final int button_item_confrim=0x7f0a0083;
+        public static final int button_item_confrim=0x7f0a0084;
         public static final int button_mms=0x7f0a000e;
         public static final int button_ok=0x7f0a000f;
         public static final int button_open_browser=0x7f0a0010;
         public static final int button_product_search=0x7f0a0011;
-        public static final int button_save_user_name=0x7f0a0085;
-        public static final int button_scan=0x7f0a0082;
+        public static final int button_save_user_name=0x7f0a0086;
+        public static final int button_scan=0x7f0a0083;
         public static final int button_search_book_contents=0x7f0a0012;
         public static final int button_share_app=0x7f0a0013;
         public static final int button_share_bookmark=0x7f0a0014;
@@ -177,7 +179,7 @@ public final class R {
         public static final int button_sms=0x7f0a001a;
         public static final int button_web_search=0x7f0a001b;
         public static final int button_wifi=0x7f0a001c;
-        public static final int connection_error=0x7f0a0089;
+        public static final int connection_error=0x7f0a008a;
         public static final int contents_contact=0x7f0a001d;
         public static final int contents_email=0x7f0a001e;
         public static final int contents_location=0x7f0a001f;
@@ -185,8 +187,8 @@ public final class R {
         public static final int contents_sms=0x7f0a0021;
         public static final int contents_text=0x7f0a0022;
         public static final int edit_message=0x7f0a007f;
-        public static final int empty_list=0x7f0a008b;
-        public static final int hello_world=0x7f0a0087;
+        public static final int empty_list=0x7f0a008c;
+        public static final int hello_world=0x7f0a0088;
         public static final int history_clear_one_history_text=0x7f0a0024;
         public static final int history_clear_text=0x7f0a0023;
         public static final int history_email_title=0x7f0a0025;
@@ -194,6 +196,7 @@ public final class R {
         public static final int history_empty_detail=0x7f0a0027;
         public static final int history_send=0x7f0a0028;
         public static final int history_title=0x7f0a0029;
+        public static final int loading_message=0x7f0a0080;
         public static final int main_activity_title=0x7f0a0079;
         public static final int menu_encode_mecard=0x7f0a002a;
         public static final int menu_encode_vcard=0x7f0a002b;
@@ -271,9 +274,9 @@ public final class R {
         public static final int result_wifi=0x7f0a0073;
         public static final int sbc_name=0x7f0a0074;
         public static final int share_name=0x7f0a0075;
-        public static final int title_activity_display_message=0x7f0a008a;
-        public static final int title_activity_main=0x7f0a0086;
-        public static final int title_holder=0x7f0a0088;
+        public static final int title_activity_display_message=0x7f0a008b;
+        public static final int title_activity_main=0x7f0a0087;
+        public static final int title_holder=0x7f0a0089;
         public static final int user_name_box_label=0x7f0a007e;
         public static final int wifi_changing_network=0x7f0a0076;
         public static final int wifi_ssid_label=0x7f0a0077;

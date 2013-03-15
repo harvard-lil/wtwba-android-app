@@ -2,10 +2,10 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
 	<item android:id="@+id/scanButton"
-	    android:title="Add Item"
+	    android:title="Add item"
 	/>
 	<item android:id="@+id/manageUserButton"
-	    android:title="Manage User"/>
+	    android:title="Manage user key"/>
     
 
 </menu>

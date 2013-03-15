@@ -1,8 +1,11 @@
 package edu.harvad.law.librarylab.wtwba;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 import android.content.Context;
+import android.graphics.BitmapFactory;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -59,7 +62,22 @@ public class ItemDetailsListAdapter extends BaseAdapter {
            
            ItemDetailsInList msg = _data.get(position);
            Log.w("idladapter message in msg", msg.title);
-           image.setImageResource(msg.icon);
+
+           //image.setImageResource(msg.icon);
+           
+           
+           FileInputStream in;
+		try {
+			in = _c.getApplicationContext().openFileInput(msg.barcode);
+			image.setImageBitmap(BitmapFactory.decodeStream(in));
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			image.setImageResource(R.drawable.cover_default);
+			e.printStackTrace();
+		}
+
+           
+           
            titleView.setText(msg.title);
            dueView.setText("Due on: "+msg.due);
            barcodeView.setText(msg.barcode);

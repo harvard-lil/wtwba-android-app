@@ -15,4 +15,6 @@
 <fullyQualifiedTypeName name="android.content.CursorLoader"/>
 <fullyQualifiedTypeName name="java.util.Date"/>
 <fullyQualifiedTypeName name="android.util.Log"/>
+<fullyQualifiedTypeName name="edu.harvad.law.librarylab.wtwba.R.drawable"/>
+<fullyQualifiedTypeName name="java.lang.String"/>
 </qualifiedTypeNameHistroy>

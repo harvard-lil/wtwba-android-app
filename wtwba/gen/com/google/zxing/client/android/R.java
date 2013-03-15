@@ -211,9 +211,9 @@ public final class R {
 		public static final int search_book_contents = 0x7f03000d;
 	}
 	public static final class drawable {
-		public static final int launcher_icon = 0x7f020002;
-		public static final int shopper_icon = 0x7f020004;
-		public static final int share_via_barcode = 0x7f020003;
+		public static final int launcher_icon = 0x7f020003;
+		public static final int shopper_icon = 0x7f020005;
+		public static final int share_via_barcode = 0x7f020004;
 	}
 	public static final class xml {
 		public static final int preferences = 0x7f040000;
