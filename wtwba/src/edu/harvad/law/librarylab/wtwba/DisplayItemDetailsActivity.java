@@ -100,39 +100,49 @@ public class DisplayItemDetailsActivity extends Activity {
 
         @Override
         protected void onPostExecute(String result) {
-            setContentView(R.layout.activity_item_details);
+            //setContentView(R.layout.activity_item_details);
             
             String title = null;
             String due_date = null;
             String isbn = null;
+            Log.w("response from add", result);
             
             try {
 				JSONObject myjson = new JSONObject(result);
-				Log.w("title from add", myjson.getString("title"));
+
 				title = myjson.getString("title");
 				due_date = myjson.getString("due");
 				isbn = myjson.getString("isbn");
 				
-				db.add_item(new Item(this.barcode, title, due_date));
-			
-				// If we get an isbn back, let's try to download the cover
-				if(isbn != null && isbn != ""){
-					new DownloadCoverTask(isbn, this.barcode).execute();
+				if (title == "null") {
+					Log.w("title was null", title);
+					Intent intent = new Intent(getBaseContext(), ScanErrorActivity.class);
+		    		startActivity(intent);
+				} else {
+					db.add_item(new Item(this.barcode, title, due_date));
+					
+					Log.w("adding, trying isbn", String.valueOf(isbn.length()));
+					
+					// If we get an isbn back, let's try to download the cover
+					if (isbn != null && isbn.length() >0) {
+						new DownloadCoverTask(isbn, this.barcode, title, due_date).execute();
+					} else {
+						Intent intent = new Intent(getBaseContext(), ItemFoundActivity.class);
+						intent.putExtra("barcode", this.barcode);
+						intent.putExtra("title", title);
+						intent.putExtra("due", due_date);
+			    		startActivity(intent);
+					}
 				}
 				
 			} catch (JSONException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				Log.w("json error", e.toString());
+				Intent intent = new Intent(getBaseContext(), ScanErrorActivity.class);
+	    		startActivity(intent);
 			}
             
-            
-            // If error, display here
-            //TextView text_title = (TextView) findViewById(R.id.title_details);
-            //text_title.setText(title);
-            
-            Intent intent = new Intent(getBaseContext(), MainActivity.class);
-    		startActivity(intent);
-            
+            //Intent intent = new Intent(getBaseContext(), ConfirmAddActivity.class);
+    		//startActivity(intent);
             
         }
         
@@ -200,11 +210,16 @@ public class DisplayItemDetailsActivity extends Activity {
 
     	private String isbn;
     	private String barcode;
+    	private String title;
+    	private String due_date;
+    	
 
-        public DownloadCoverTask(String isbn, String barcode)
+        public DownloadCoverTask(String isbn, String barcode, String title, String due_date)
         {
         	this.isbn = isbn;
             this.barcode = barcode;
+            this.title = title;
+            this.due_date= due_date;
         }
     	
     	
@@ -231,7 +246,10 @@ public class DisplayItemDetailsActivity extends Activity {
             Log.w("wtwba", result);
             
             
-            Intent intent = new Intent(getBaseContext(), MainActivity.class);
+            Intent intent = new Intent(getBaseContext(), ItemFoundActivity.class);
+            intent.putExtra("barcode", this.barcode);
+			intent.putExtra("title", this.title);
+			intent.putExtra("due", this.due_date);
     		startActivity(intent);
             
             
@@ -241,24 +259,35 @@ public class DisplayItemDetailsActivity extends Activity {
         // Thanks http://www.xyzws.com/Javafaq/how-to-use-httpurlconnection-post-data-to-web-server/139
         public String excutePost(String targetURL, String urlParameters) {
           
-          
+          Log.w("ol url", targetURL);
           try {
         	    
-        	    //HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+        	  //HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
         	  URL url = new URL(targetURL);
         	  URLConnection connection = url.openConnection();
         	  HttpURLConnection httpConnection = (HttpURLConnection) connection;
+        	  httpConnection.setInstanceFollowRedirects( false );
         	  httpConnection.setRequestMethod("GET");
         	    //urlConnection.setDoOutput(true);
         	  httpConnection.connect();
 
-        	  int code = httpConnection.getResponseCode();
-        	  Log.w("ol cover http status", String.valueOf(code));
+        	  
+        	  String location = httpConnection.getHeaderField("Location");
+        	  
+        	  
+        	  
         	  // Open Library will redirect us to a found cover
-        	  if (code == 302){
-        	    
+        	  // If it didn't redirect, it serves up a 1x1 placeholder
+        	  if (location != null && location.length() > 0){
+        		  
+        		  URL redirected_url = new URL(location);
+            	  URLConnection redirected_connection = redirected_url.openConnection();
+            	  HttpURLConnection redirected_httpConnection = (HttpURLConnection) redirected_connection;
+            	  redirected_httpConnection.setRequestMethod("GET");
+            	  redirected_httpConnection.connect();  
+        		  
         	    FileOutputStream fos = openFileOutput(this.barcode, Context.MODE_PRIVATE);
-        	    InputStream inputStream = httpConnection.getInputStream();
+        	    InputStream inputStream = redirected_httpConnection.getInputStream();
 
         	    byte[] buffer = new byte[1024];
         	    int bufferLength = 0;

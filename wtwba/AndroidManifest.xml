@@ -63,6 +63,20 @@
 				android:value="edu.harvad.law.librarylab.wtwba.MainActivity" />
 		</activity>
 		
+		<activity android:name=".ScanErrorActivity"
+			android:label="@string/scan_error_title"
+			>
+			<meta-data android:name="android.support.PARENT_ACTIVITY"
+				android:value="edu.harvad.law.librarylab.wtwba.MainActivity" />
+		</activity>
+		
+		<activity android:name=".ItemFoundActivity"
+			android:label="@string/item_found_title"
+			>
+			<meta-data android:name="android.support.PARENT_ACTIVITY"
+				android:value="edu.harvad.law.librarylab.wtwba.MainActivity" />
+		</activity>
+		
 		<activity android:name=".DeleteItemActivity"
 			android:label="@string/activity_delete_title"
 			>

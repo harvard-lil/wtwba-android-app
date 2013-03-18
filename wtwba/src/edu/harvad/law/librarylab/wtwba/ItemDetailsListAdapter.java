@@ -66,20 +66,33 @@ public class ItemDetailsListAdapter extends BaseAdapter {
            //image.setImageResource(msg.icon);
            
            
-           FileInputStream in;
+        FileInputStream in;
 		try {
 			in = _c.getApplicationContext().openFileInput(msg.barcode);
 			image.setImageBitmap(BitmapFactory.decodeStream(in));
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			image.setImageResource(R.drawable.cover_default);
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 
            
+		String due_message;
+		
+		Log.w("due date", "|" + msg.due + "|");
+		
+		if (msg.due == "welcome_date") {
+			// When our item list is empty, we display a welcome message. it doesn't get a due date.
+			due_message = "";
+		} else if (msg.due != null && msg.due.length() > 0) {
+			due_message = "Due on " + msg.due;
+		} else {
+			due_message = "No due date found";
+		}
+		
            
            titleView.setText(msg.title);
-           dueView.setText("Due on: "+msg.due);
+           dueView.setText(due_message);
            barcodeView.setText(msg.barcode);
                         
         return v;

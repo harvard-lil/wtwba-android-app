@@ -1,0 +1,86 @@
+package edu.harvad.law.librarylab.wtwba;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+
+import android.app.Activity;
+import android.content.Intent;
+import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.graphics.Typeface;
+import android.os.Bundle;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.ForegroundColorSpan;
+import android.text.style.StyleSpan;
+import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+public class ItemFoundActivity extends Activity {
+	String barcode;
+	String title;
+	String due;
+
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+
+		setContentView(R.layout.activity_item_found);
+
+		Bundle bundle = getIntent().getExtras();
+		this.barcode = bundle.getString("barcode");
+		this.title = bundle.getString("title");
+
+
+		TextView text_title = (TextView) findViewById(R.id.title_preview);
+		text_title.setText(this.title);
+
+		ImageView image = (ImageView) findViewById(R.id.icon_preview);
+		TextView titleView = (TextView) findViewById(R.id.title_list);
+		TextView dueView = (TextView) findViewById(R.id.due_list);
+		TextView barcodeView = (TextView) findViewById(R.id.barcode_list);
+
+		Log.w("idladapter", String.valueOf(_data.size()));
+		Log.w("idladapter index", String.valueOf(position));
+		ItemDetailsInList junk = _data.get(0);
+
+		Log.w("idladapter message", junk.title);
+
+		ItemDetailsInList msg = _data.get(position);
+		Log.w("idladapter message in msg", msg.title);
+
+		// image.setImageResource(msg.icon);
+
+		FileInputStream in;
+		try {
+			in = _c.getApplicationContext().openFileInput(msg.barcode);
+			image.setImageBitmap(BitmapFactory.decodeStream(in));
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			image.setImageResource(R.drawable.cover_default);
+			// e.printStackTrace();
+		}
+
+		String due_message;
+
+		Log.w("due date", "|" + msg.due + "|");
+
+		if (msg.due == "welcome_date") {
+			// When our item list is empty, we display a welcome message. it
+			// doesn't get a due date.
+			due_message = "";
+		} else if (msg.due != null && msg.due.length() > 0) {
+			due_message = "Due on " + msg.due;
+		} else {
+			due_message = "No due date found";
+		}
+
+		titleView.setText(msg.title);
+		dueView.setText(due_message);
+		barcodeView.setText(msg.barcode);
+
+	}
+
+}

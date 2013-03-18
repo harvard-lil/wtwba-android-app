@@ -5,6 +5,7 @@ import java.util.List;
 
 import android.app.ListActivity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -20,7 +21,7 @@ import android.widget.ListView;
 public class MainActivity extends ListActivity implements OnItemClickListener {
 
 	public final static String EXTRA_MESSAGE = "edu.harvad.law.librarylab.wtwba.MESSAGE";
-	
+	public static final String PREFS_NAME = "MyPrefsFile";
 	
 	
 	//ListView msgList;
@@ -130,6 +131,16 @@ public class MainActivity extends ListActivity implements OnItemClickListener {
 	public void onResume() {
 		// Draw the list of already checked out items
 		super.onResume();
+		
+		
+		// If the user hasn't set a key, don't let them do anything (other than set a key)
+		SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+        String user_name = settings.getString("user_name", "");
+        Log.w("user name is", user_name);
+        if (user_name == null || user_name.length() == 0) {
+        	this.manageUser();
+        }
+		
 
 		setContentView(R.layout.activity_main);
 
@@ -156,6 +167,15 @@ public class MainActivity extends ListActivity implements OnItemClickListener {
         }
 
         Log.w("size of view items", String.valueOf(items_for_view.size()));
+        
+        if (0 == items_for_view.size()) {
+        	ItemDetailsInList idil = new ItemDetailsInList();
+        	idil.setIcon(R.drawable.ic_launcher);
+        	idil.setTitle("Get started by adding an item using the menu above.");
+        	idil.setDue("welcome_date");
+        	idil.setBarcode("welcome_barcode");
+        	items_for_view.add(idil);
+        }
 
         //String[] v_ar = new String[this.items_for_view.size()];
         //v_ar = items_for_view.toArray(v_ar);
@@ -175,14 +195,13 @@ public class MainActivity extends ListActivity implements OnItemClickListener {
             public boolean onItemLongClick(AdapterView<?> arg0, View arg1, int pos, long id) {
         		ItemDetailsInList item = items_for_view.get(pos);
 
-        		Log.w("from lc: ", item.barcode);
-        		
-
-        		Intent intent = new Intent(getBaseContext(), DeleteItemActivity.class);
-        		intent.putExtra("barcode", item.barcode);
-        		intent.putExtra("title", item.title);
-        		startActivity(intent);
-        		
+        		// One exception: when the list is empty, we display a non-clickable welcome entry
+        		if (item.barcode != "welcome_barcode") {	
+	        		Intent intent = new Intent(getBaseContext(), DeleteItemActivity.class);
+	        		intent.putExtra("barcode", item.barcode);
+	        		intent.putExtra("title", item.title);
+	        		startActivity(intent);
+        		}
                 return true;
             }
         }); 
@@ -274,11 +293,12 @@ public class MainActivity extends ListActivity implements OnItemClickListener {
 		// When a user clicks an item (a book they've already scanned) in the list
 		ItemDetailsInList item = items_for_view.get(arg2);
 
-		Log.d("from listview: ", item.barcode);
-		
-		Intent intent = new Intent(this, LocationActivity.class);
-		intent.putExtra("barcode", item.barcode);
-		startActivity(intent);
+		// One exception: when the list is empty, we display a non-clickable welcome entry
+		if (item.barcode != "welcome_barcode") {
+			Intent intent = new Intent(this, LocationActivity.class);
+			intent.putExtra("barcode", item.barcode);
+			startActivity(intent);
+		}
 
 	}
 	
