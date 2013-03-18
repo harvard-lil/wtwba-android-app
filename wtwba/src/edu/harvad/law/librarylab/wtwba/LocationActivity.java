@@ -8,6 +8,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -21,12 +22,8 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 public class LocationActivity extends ListActivity {
 
@@ -63,11 +60,19 @@ public class LocationActivity extends ListActivity {
     	
     	String location = LOCATIONS[position];
 
-    	
-		Log.d("from listview: ", location);
+    	// We store the last checked in time for each barcode
+        Date now = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("EEE, MMM dd HH:mm");
+        String strDate = sdf.format(now);
 
+		SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+	    SharedPreferences.Editor editor = settings.edit();
+	    editor.putString(barcode,  strDate);
+
+	    // Commit the edits!
+	    editor.commit();
     	
-    	
+	    
     	ConnectivityManager connMgr = (ConnectivityManager) 
     	        getSystemService(Context.CONNECTIVITY_SERVICE);
     	        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();

@@ -1,0 +1,34 @@
+package edu.harvad.law.librarylab.wtwba;
+
+import android.app.Activity;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
+
+
+public class TypeBarcodeActivity extends Activity {
+	
+    public static final String PREFS_NAME = "MyPrefsFile";
+
+	
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        
+        setContentView(R.layout.activity_type_barcode);
+    }
+    
+    /** Called when the user sets the user name */
+	public void submitBarcode(View view) {
+
+		
+		TextView text_title = (TextView) findViewById(R.id.barcode);
+        String barcode = text_title.getText().toString();
+
+	    Intent intent = new Intent(this, MainActivity.class);
+		startActivity(intent);
+	    
+	}
+}

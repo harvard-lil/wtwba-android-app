@@ -59,7 +59,6 @@ public class Item {
 	}
 	
 	public String get_due_date() {
-		Log.w("item container", "returning due_date " + this.due_date);
 		return this.due_date;
 	}
 	public void set_due_date(String due_date) {

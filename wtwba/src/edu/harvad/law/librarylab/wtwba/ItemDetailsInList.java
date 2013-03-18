@@ -6,6 +6,7 @@ public class ItemDetailsInList {
             String title;
             String due;
             String barcode;
+            String last;
            
             public int getIcon() {
                 return icon;
@@ -37,5 +38,13 @@ public class ItemDetailsInList {
 
 			public void setBarcode(String barcode) {
 				this.barcode = barcode;
+			}
+
+			public String getLast() {
+				return last;
+			}
+
+			public void setLast(String last) {
+				this.last = last;
 			}            
 }

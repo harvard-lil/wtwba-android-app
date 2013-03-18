@@ -70,6 +70,13 @@
 				android:value="edu.harvad.law.librarylab.wtwba.MainActivity" />
 		</activity>
 		
+		<activity android:name=".TypeBarcodeActivity"
+			android:label="@string/activity_type_barcode_title"
+			>
+			<meta-data android:name="android.support.PARENT_ACTIVITY"
+				android:value="edu.harvad.law.librarylab.wtwba.MainActivity" />
+		</activity>
+		
 		<activity android:name=".ItemFoundActivity"
 			android:label="@string/item_found_title"
 			>

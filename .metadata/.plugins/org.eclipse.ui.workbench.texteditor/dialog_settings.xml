@@ -13,16 +13,16 @@
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="false" key="wholeword"/>
-		<item value="icon" key="selection"/>
+		<item value="Type" key="selection"/>
 		<list key="findhistory">
-			<item value="icon"/>
-			<item value="ico"/>
-			<item value="getting"/>
-			<item value="wtwba"/>
-			<item value="openl"/>
-			<item value="targetu"/>
-			<item value="openlib"/>
-			<item value="db"/>
+			<item value="type"/>
+			<item value="title"/>
+			<item value="mana"/>
+			<item value="last"/>
+			<item value="butt"/>
+			<item value="butto"/>
+			<item value="msg"/>
+			<item value="barco"/>
 		</list>
 		<list key="replacehistory">
 		</list>

@@ -47,11 +47,7 @@ public class DisplayItemDetailsActivity extends Activity {
             
             DatabaseHandler db = new DatabaseHandler(this);
             new DownloadHtmlTask(barcode, db).execute();
-            /**
-             * CRUD Operations
-             * */
-            // Inserting Contacts
-            Log.d("Insert: ", "Inserting ..");
+           
             //db.add_entry(new Entry("junkbarcode", "junklocation"));
         } else {
             //textView.setText("No network connection available.");

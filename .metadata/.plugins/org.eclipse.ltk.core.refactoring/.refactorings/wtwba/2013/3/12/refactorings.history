@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;wtwba/src/edu/harvad/law/librarylab/wtwba/TypeBarcodeActivity.jva&apos; to &apos;TypeBarcodeActivity.java&apos;" description="Rename resource &apos;TypeBarcodeActivity.jva&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/edu/harvad/law/librarylab/wtwba/TypeBarcodeActivity.jva" name="TypeBarcodeActivity.java" stamp="1363645021323" updateReferences="true"/>
+</session>
