@@ -50,9 +50,6 @@ public class MainActivity extends ListActivity implements OnItemClickListener {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 
-
-		
-
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 
@@ -148,7 +145,9 @@ public class MainActivity extends ListActivity implements OnItemClickListener {
 		
 
 		setContentView(R.layout.activity_main);
-
+        
+        String[] l = db.get_all_locations();
+        Log.w("num locations", String.valueOf(l.length));
 		
 		
 		List<Item> items = this.db.get_all_items();
@@ -178,9 +177,9 @@ public class MainActivity extends ListActivity implements OnItemClickListener {
         	idil.setDue(item.due_date);
         	idil.setBarcode(item.get_barcode());
         	
-            String last = settings.getString(item.barcode, "Never");
+            String last = item.get_last_used();//settings.getString(item.barcode, "Never");
             
-            if (last == "Never") { 
+            if (last == null) { 
             	last = "Never used";
             } else {
             	last = "Last used " + last;

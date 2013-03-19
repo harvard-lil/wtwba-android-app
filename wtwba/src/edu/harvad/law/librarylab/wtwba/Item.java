@@ -6,10 +6,11 @@ public class Item {
  
     //private variables
 	int id;
-    String barcode;
-    String title;
-    String due_date;
-    // other attributes here
+    String barcode = null;
+    String title = null;
+    String due_date = null;
+    String last_used = null;
+    int num_uses = 0;
  
     // Empty constructor
     public Item(){
@@ -24,11 +25,13 @@ public class Item {
     }
     
     // constructor
-    public Item(int id, String barcode, String title, String due_date){
+    public Item(int id, String barcode, String title, String due_date, String last_used, int num_uses) {
     	this.id = id;
         this.barcode = barcode;
         this.title = title;
         this.due_date = due_date;
+        this.last_used = last_used;
+        this.num_uses = num_uses;
     }
     
     // getting id
@@ -64,6 +67,19 @@ public class Item {
 	public void set_due_date(String due_date) {
 		this.due_date = due_date;
 	}
+	public String get_last_used() {
+		return last_used;
+	}
+	public void set_last_used(String last_used) {
+		this.last_used = last_used;
+	}
+	public int get_num_uses() {
+		return num_uses;
+	}
+	public void set_num_uses(int num_uses) {
+		this.num_uses = num_uses;
+	}
+
  
 
 }
