@@ -79,6 +79,7 @@
 		
 		<activity android:name=".ItemFoundActivity"
 			android:label="@string/item_found_title"
+			android:screenOrientation="landscape"
 			>
 			<meta-data android:name="android.support.PARENT_ACTIVITY"
 				android:value="edu.harvad.law.librarylab.wtwba.MainActivity" />

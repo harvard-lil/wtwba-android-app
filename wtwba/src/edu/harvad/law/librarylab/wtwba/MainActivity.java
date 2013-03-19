@@ -179,7 +179,13 @@ public class MainActivity extends ListActivity implements OnItemClickListener {
         	idil.setBarcode(item.get_barcode());
         	
             String last = settings.getString(item.barcode, "Never");
-        	idil.setLast("Last used: " + last);
+            
+            if (last == "Never") { 
+            	last = "Never used";
+            } else {
+            	last = "Last used " + last;
+            }
+        	idil.setLast(last);
             //items_for_view.add(item.get_title());
             //Log.w("adding item title to list: ", item.get_title());
             //Log.w("adding item barcode to list: ", item.get_barcode());

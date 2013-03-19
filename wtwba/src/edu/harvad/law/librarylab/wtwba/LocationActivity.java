@@ -62,7 +62,7 @@ public class LocationActivity extends ListActivity {
 
     	// We store the last checked in time for each barcode
         Date now = new Date();
-        SimpleDateFormat sdf = new SimpleDateFormat("EEE, MMM dd HH:mm");
+        SimpleDateFormat sdf = new SimpleDateFormat("MMM dd, h:mm a");
         String strDate = sdf.format(now);
 
 		SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
