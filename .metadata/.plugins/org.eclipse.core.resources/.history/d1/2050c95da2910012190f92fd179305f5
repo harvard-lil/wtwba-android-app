@@ -18,7 +18,7 @@ public class ScanErrorActivity extends Activity {
 	/** Called when the user selects the "key in new item" button */
 	public void keyItem(View view) {
 
-		Intent intent = new Intent(this, TypeBarcodeActivity.class);
+		Intent intent = new Intent(this, MainActivity.class);
 		startActivity(intent);
 
 	}

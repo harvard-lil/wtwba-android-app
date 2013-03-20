@@ -8659,3 +8659,82 @@ org.eclipse.core.internal.resources.ResourceException: Resource is out of sync w
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
 !SUBENTRY 2 org.eclipse.core.resources 4 274 2013-03-20 16:13:40.352
 !MESSAGE Resource is out of sync with the file system: '/wtwba/bin/R.txt'.
+
+!ENTRY org.eclipse.ui.console 4 120 2013-03-20 16:26:45.179
+!MESSAGE Error logged from Console plug-in: 
+!STACK 0
+java.io.IOException: Document is closed
+	at org.eclipse.ui.internal.console.IOConsolePartitioner.streamAppended(IOConsolePartitioner.java:453)
+	at org.eclipse.ui.console.IOConsoleOutputStream.notifyParitioner(IOConsoleOutputStream.java:245)
+	at org.eclipse.ui.console.IOConsoleOutputStream.encodedWrite(IOConsoleOutputStream.java:240)
+	at org.eclipse.ui.console.IOConsoleOutputStream.write(IOConsoleOutputStream.java:225)
+	at org.eclipse.ui.console.MessageConsoleStream.print(MessageConsoleStream.java:56)
+	at com.android.ide.eclipse.ddms.DdmsPlugin.printToStream(DdmsPlugin.java:794)
+	at com.android.ide.eclipse.ddms.DdmsPlugin.access$1(DdmsPlugin.java:790)
+	at com.android.ide.eclipse.ddms.DdmsPlugin$2.printLog(DdmsPlugin.java:178)
+	at com.android.ddmlib.Log.println(Log.java:328)
+	at com.android.ddmlib.Log.e(Log.java:230)
+	at com.android.ddmuilib.logcat.LogCatReceiver$1.run(LogCatReceiver.java:119)
+	at java.lang.Thread.run(Thread.java:680)
+
+!ENTRY org.eclipse.ui.console 4 120 2013-03-20 16:26:45.180
+!MESSAGE Error logged from Console plug-in: 
+!STACK 0
+java.io.IOException: Output Stream is closed
+	at org.eclipse.ui.console.IOConsoleOutputStream.encodedWrite(IOConsoleOutputStream.java:230)
+	at org.eclipse.ui.console.IOConsoleOutputStream.write(IOConsoleOutputStream.java:225)
+	at org.eclipse.ui.console.MessageConsoleStream.print(MessageConsoleStream.java:56)
+	at com.android.ide.eclipse.ddms.DdmsPlugin.printToStream(DdmsPlugin.java:796)
+	at com.android.ide.eclipse.ddms.DdmsPlugin.access$1(DdmsPlugin.java:790)
+	at com.android.ide.eclipse.ddms.DdmsPlugin$2.printLog(DdmsPlugin.java:178)
+	at com.android.ddmlib.Log.println(Log.java:328)
+	at com.android.ddmlib.Log.e(Log.java:230)
+	at com.android.ddmuilib.logcat.LogCatReceiver$1.run(LogCatReceiver.java:119)
+	at java.lang.Thread.run(Thread.java:680)
+
+!ENTRY org.eclipse.ui.console 4 120 2013-03-20 16:26:45.223
+!MESSAGE Error logged from Console plug-in: 
+!STACK 0
+java.io.IOException: Output Stream is closed
+	at org.eclipse.ui.console.IOConsoleOutputStream.encodedWrite(IOConsoleOutputStream.java:230)
+	at org.eclipse.ui.console.IOConsoleOutputStream.write(IOConsoleOutputStream.java:225)
+	at org.eclipse.ui.console.MessageConsoleStream.print(MessageConsoleStream.java:56)
+	at org.eclipse.ui.console.MessageConsoleStream.println(MessageConsoleStream.java:81)
+	at com.android.ide.eclipse.ddms.DdmsPlugin.printToStream(DdmsPlugin.java:798)
+	at com.android.ide.eclipse.ddms.DdmsPlugin.access$1(DdmsPlugin.java:790)
+	at com.android.ide.eclipse.ddms.DdmsPlugin$2.printLog(DdmsPlugin.java:178)
+	at com.android.ddmlib.Log.println(Log.java:328)
+	at com.android.ddmlib.Log.e(Log.java:230)
+	at com.android.ddmuilib.logcat.LogCatReceiver$1.run(LogCatReceiver.java:119)
+	at java.lang.Thread.run(Thread.java:680)
+!SESSION 2013-03-20 17:07:41.359 -----------------------------------------------
+eclipse.buildId=M20120208-0800
+java.version=1.6.0_43
+java.vendor=Apple Inc.
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.java.product -keyring /Users/phillipsm/.eclipse_keyring -showlocation
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.eclipse.epp.package.java.product -keyring /Users/phillipsm/.eclipse_keyring -showlocation
+
+!ENTRY org.eclipse.core.net 1 0 2013-03-20 17:07:50.087
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.jface 2 0 2013-03-20 17:08:07.484
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2013-03-20 17:08:07.484
+!MESSAGE A conflict occurred for ALT+COMMAND+R:
+Binding(ALT+COMMAND+R,
+	ParameterizedCommand(Command(org.python.pydev.debug.setnext,Set Next Statement,
+		,
+		Category(org.python.pydev.ui.category.run,PyDev - Run,Python run category,true),
+		,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+Binding(ALT+COMMAND+R,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.edit.text.java.rename.element,Rename - Refactoring ,
+		Rename the selected element,
+		Category(org.eclipse.jdt.ui.category.refactoring,Refactor - Java,Java Refactoring Actions,true),
+		ActionHandler(org.eclipse.jdt.ui.actions.RenameAction@b8db8eb),
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,cocoa,system)

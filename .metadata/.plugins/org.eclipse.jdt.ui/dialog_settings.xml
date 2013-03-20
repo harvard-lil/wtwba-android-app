@@ -32,15 +32,15 @@
 	<section name="JavaSearchPage">
 		<item value="false" key="CASE_SENSITIVE"/>
 		<item value="11" key="INCLUDE_MASK"/>
-		<item value="7" key="HISTORY_SIZE"/>
+		<item value="8" key="HISTORY_SIZE"/>
 		<section name="HISTORY2">
 			<item value="11" key="includeMask"/>
 			<item value="2" key="limitTo"/>
 			<item value="0" key="scope"/>
+			<item value="placeh" key="pattern"/>
 			<item value="" key="javaElement"/>
-			<item value="get_due_date" key="pattern"/>
-			<item value="0" key="matchLocations"/>
 			<item value="0" key="searchFor"/>
+			<item value="0" key="matchLocations"/>
 			<item value="false" key="isCaseSensitive"/>
 			<list key="workingSets">
 			</list>
@@ -49,10 +49,10 @@
 			<item value="11" key="includeMask"/>
 			<item value="2" key="limitTo"/>
 			<item value="0" key="scope"/>
+			<item value="get_due_date" key="pattern"/>
 			<item value="" key="javaElement"/>
-			<item value="private * startActivityForResult" key="pattern"/>
-			<item value="0" key="matchLocations"/>
 			<item value="0" key="searchFor"/>
+			<item value="0" key="matchLocations"/>
 			<item value="false" key="isCaseSensitive"/>
 			<list key="workingSets">
 			</list>
@@ -61,10 +61,10 @@
 			<item value="11" key="includeMask"/>
 			<item value="2" key="limitTo"/>
 			<item value="0" key="scope"/>
+			<item value="getsharedpref" key="pattern"/>
 			<item value="" key="javaElement"/>
-			<item value="db.add_" key="pattern"/>
-			<item value="0" key="matchLocations"/>
 			<item value="1" key="searchFor"/>
+			<item value="0" key="matchLocations"/>
 			<item value="false" key="isCaseSensitive"/>
 			<list key="workingSets">
 			</list>
@@ -73,10 +73,10 @@
 			<item value="11" key="includeMask"/>
 			<item value="2" key="limitTo"/>
 			<item value="0" key="scope"/>
+			<item value="db.add_" key="pattern"/>
 			<item value="" key="javaElement"/>
-			<item value="placeh" key="pattern"/>
+			<item value="1" key="searchFor"/>
 			<item value="0" key="matchLocations"/>
-			<item value="0" key="searchFor"/>
 			<item value="false" key="isCaseSensitive"/>
 			<list key="workingSets">
 			</list>
@@ -85,10 +85,10 @@
 			<item value="11" key="includeMask"/>
 			<item value="2" key="limitTo"/>
 			<item value="0" key="scope"/>
+			<item value="public * startActivityForResult" key="pattern"/>
 			<item value="" key="javaElement"/>
-			<item value="startActivityForResult" key="pattern"/>
-			<item value="0" key="matchLocations"/>
 			<item value="0" key="searchFor"/>
+			<item value="0" key="matchLocations"/>
 			<item value="false" key="isCaseSensitive"/>
 			<list key="workingSets">
 			</list>
@@ -97,10 +97,22 @@
 			<item value="11" key="includeMask"/>
 			<item value="2" key="limitTo"/>
 			<item value="0" key="scope"/>
+			<item value="private * startActivityForResult" key="pattern"/>
 			<item value="" key="javaElement"/>
-			<item value="public * startActivityForResult" key="pattern"/>
-			<item value="0" key="matchLocations"/>
 			<item value="0" key="searchFor"/>
+			<item value="0" key="matchLocations"/>
+			<item value="false" key="isCaseSensitive"/>
+			<list key="workingSets">
+			</list>
+		</section>
+		<section name="HISTORY7">
+			<item value="11" key="includeMask"/>
+			<item value="2" key="limitTo"/>
+			<item value="0" key="scope"/>
+			<item value="myfirst" key="pattern"/>
+			<item value="" key="javaElement"/>
+			<item value="0" key="searchFor"/>
+			<item value="0" key="matchLocations"/>
 			<item value="false" key="isCaseSensitive"/>
 			<list key="workingSets">
 			</list>
@@ -109,10 +121,10 @@
 			<item value="11" key="includeMask"/>
 			<item value="2" key="limitTo"/>
 			<item value="0" key="scope"/>
+			<item value="startActivityForResult" key="pattern"/>
 			<item value="" key="javaElement"/>
-			<item value="myfirst" key="pattern"/>
-			<item value="0" key="matchLocations"/>
 			<item value="0" key="searchFor"/>
+			<item value="0" key="matchLocations"/>
 			<item value="false" key="isCaseSensitive"/>
 			<list key="workingSets">
 			</list>
