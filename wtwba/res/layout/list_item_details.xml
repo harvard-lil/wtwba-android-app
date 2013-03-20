@@ -40,20 +40,20 @@
             android:singleLine="false" android:ellipsize="end" android:lines="1"
          />
         
-        <TextView
+        <!-- <TextView
 		        android:id="@+id/due_list"
 		        android:layout_width="match_parent"
 		        android:layout_height="wrap_content"
 		        android:layout_marginLeft ="10dp"
 		        android:textColor="#838381"
 		        android:gravity="left"
-		    />
+		    /> -->
 
         <TextView
 		        android:id="@+id/last_list"
 		        android:layout_width="match_parent"
 		        android:layout_height="wrap_content"
-		        android:layout_marginTop="30dp"
+		        android:layout_marginTop="45dp"
 		        android:textColor="#6a6a68"
 		        android:gravity="right|bottom"
 		    />

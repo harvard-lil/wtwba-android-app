@@ -1,50 +1,53 @@
 package edu.harvad.law.librarylab.wtwba;
 
-
 public class ItemDetailsInList {
-            int icon ;
-            String title;
-            String due;
-            String barcode;
-            String last;
-           
-            public int getIcon() {
-                return icon;
-            }
-            
-            public void setIcon(int icon) {
-                this.icon = icon;
-            }
+	
+	// A container class for our item list. We use this when 
+	// populating our list of items on our home screen
+	
+	int icon;
+	String title;
+	String due;
+	String barcode;
+	String last;
 
-            public String getTitle() {
-				return title;
-			}
+	public int getIcon() {
+		return icon;
+	}
 
-			public void setTitle(String title) {
-				this.title = title;
-			}
+	public void setIcon(int icon) {
+		this.icon = icon;
+	}
 
-			public String getDue() {
-				return due;
-			}
+	public String getTitle() {
+		return title;
+	}
 
-			public void setDue(String due) {
-				this.due = due;
-			}
+	public void setTitle(String title) {
+		this.title = title;
+	}
 
-			public String getBarcode() {
-				return barcode;
-			}
+	public String getDue() {
+		return due;
+	}
 
-			public void setBarcode(String barcode) {
-				this.barcode = barcode;
-			}
+	public void setDue(String due) {
+		this.due = due;
+	}
 
-			public String getLast() {
-				return last;
-			}
+	public String getBarcode() {
+		return barcode;
+	}
 
-			public void setLast(String last) {
-				this.last = last;
-			}            
+	public void setBarcode(String barcode) {
+		this.barcode = barcode;
+	}
+
+	public String getLast() {
+		return last;
+	}
+
+	public void setLast(String last) {
+		this.last = last;
+	}
 }

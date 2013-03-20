@@ -1,0 +1,120 @@
+package edu.harvad.law.librarylab.wtwba;
+
+import java.io.BufferedReader;
+import java.io.DataOutputStream;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLEncoder;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import android.app.ListActivity;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.TextView;
+
+public class LocationActivity extends ListActivity {
+
+	public static final String PREFS_NAME = "MyPrefsFile";
+
+	String selected_location;
+	static String barcode; 
+
+	DatabaseHandler db = new DatabaseHandler(this);
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+
+
+		Bundle bundle = getIntent().getExtras();
+		this.barcode = bundle.getString("barcode");
+
+
+		String[] locations = db.get_all_locations();
+
+		setListAdapter(new ArrayAdapter<String>(this, R.layout.activity_location,locations));
+
+		ListView listView = getListView();
+		listView.setTextFilterEnabled(true);
+
+
+
+	}
+
+	@Override 
+	public void onListItemClick(ListView l, View v, int position, long id) {
+
+		// get value of location from list
+		// if web connection, send it to the receive service
+
+		TextView text_title = (TextView) l.getChildAt(position);
+		
+		
+		String location = (String) text_title.getText();
+
+		// We store the last checked in time for each barcode
+		Date now = new Date();
+		SimpleDateFormat sdf = new SimpleDateFormat("MMM dd, h:mm a");
+		String strDate = sdf.format(now);
+
+
+		Item item = this.db.get_item_by_barcode(this.barcode);
+		item.set_last_used(strDate);
+		int num_uses = item.get_num_uses();
+		Log.w("num uses was", String.valueOf(num_uses));
+		num_uses = num_uses + 1;
+		item.set_num_uses(num_uses);
+		Log.w("num uses is ", String.valueOf(num_uses));
+
+
+		db.update_item(item);
+
+		db.update_location(location);
+
+		// Commit the edits!
+		//editor.commit();
+
+// what needs to happen?
+		// move downloadhtmltask to its own class
+		// if we have network conn, send checkin
+		// if not, toss it in a table and have main send it
+
+		SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+        String user_name = settings.getString("user_name", "");
+		
+		
+		ConnectivityManager connMgr = (ConnectivityManager)
+				getSystemService(Context.CONNECTIVITY_SERVICE);
+		NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
+		if (networkInfo != null && networkInfo.isConnected()) {
+
+		
+			//DatabaseHandler db = new DatabaseHandler(this);
+			new SendEntryTask(barcode, location, strDate, user_name, db).execute();
+			/**
+			 * CRUD Operations
+			 * */
+			// Inserting Contacts
+			Log.d("Insert: ", "Inserting ..");
+			//db.add_entry(new Entry("junkbarcode", "junklocation"));
+		} else {
+			//textView.setText("No network connection available.");
+		}
+
+
+	}
+
+}

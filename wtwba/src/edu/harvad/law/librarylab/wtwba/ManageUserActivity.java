@@ -7,45 +7,41 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-
 public class ManageUserActivity extends Activity {
-	
-    public static final String PREFS_NAME = "MyPrefsFile";
 
-	
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        
-        setContentView(R.layout.activity_manage_user);
-        
-        
-     // Restore preferences
-        SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
-        String user_name = settings.getString("user_name", "");
-        
-        TextView text_title = (TextView) findViewById(R.id.user_name);
-        text_title.setText(user_name);   
-    }
-    
-    /** Called when the user sets the user name */
+	public static final String PREFS_NAME = "MyPrefsFile";
+
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+
+		setContentView(R.layout.activity_manage_user);
+
+		// Restore preferences
+		SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+		String user_name = settings.getString("user_name", "");
+
+		TextView text_title = (TextView) findViewById(R.id.user_name);
+		text_title.setText(user_name);
+	}
+
+	/** Called when the user sets the user name */
 	public void setUsername(View view) {
 
-		
 		TextView text_title = (TextView) findViewById(R.id.user_name);
-        String user_name = text_title.getText().toString();
+		String user_name = text_title.getText().toString();
 
-		 // We need an Editor object to make preference changes.
-	    // All objects are from android.context.Context
-	    SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
-	    SharedPreferences.Editor editor = settings.edit();
-	    editor.putString("user_name", user_name);
+		// We need an Editor object to make preference changes.
+		// All objects are from android.context.Context
+		SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+		SharedPreferences.Editor editor = settings.edit();
+		editor.putString("user_name", user_name);
 
-	    // Commit the edits!
-	    editor.commit();
+		// Commit the edits!
+		editor.commit();
 
-	    Intent intent = new Intent(this, MainActivity.class);
+		Intent intent = new Intent(this, MainActivity.class);
 		startActivity(intent);
-	    
+
 	}
 }

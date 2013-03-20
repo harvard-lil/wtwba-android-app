@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal" >
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="left"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:id="@+id/icon"
+            android:layout_width="60dp"
+            android:layout_height="90dp"
+        	android:scaleType="fitXY"
+        	android:layout_margin="10dp"
+             android:adjustViewBounds="true"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginRight="5dip"
+        android:layout_gravity="right"
+        android:orientation="vertical" >
+        <TextView
+            android:id="@+id/title_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:textColor="#ad21c3"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:gravity="left|top"
+            
+            android:singleLine="false" android:ellipsize="end" android:lines="1"
+         />
+        
+        <TextView
+		        android:id="@+id/due_list"
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_marginLeft ="10dp"
+		        android:textColor="#838381"
+		        android:gravity="left"
+		    />
+
+        <TextView
+		        android:id="@+id/last_list"
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_marginTop="30dp"
+		        android:textColor="#6a6a68"
+		        android:gravity="right|bottom"
+		    />
+            </LinearLayout>
+    <TextView
+        android:id="@+id/barcode_list"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+    />
+
+</LinearLayout>

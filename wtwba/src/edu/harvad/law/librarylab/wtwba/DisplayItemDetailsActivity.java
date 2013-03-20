@@ -26,288 +26,266 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 
-
 public class DisplayItemDetailsActivity extends Activity {
 	
+	// We have a new item, let's send it off to our remote database and download a cover image
+
 	public static final String PREFS_NAME = "MyPrefsFile";
-	
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        
-        Bundle bundle = getIntent().getExtras();
-        String barcode = bundle.getString("barcode");
-        
-     // Gets the URL from the UI's text field.
-        ConnectivityManager connMgr = (ConnectivityManager) 
-        getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
-        if (networkInfo != null && networkInfo.isConnected()) {
-            
-            
-            DatabaseHandler db = new DatabaseHandler(this);
-            new DownloadHtmlTask(barcode, db).execute();
-           
-            //db.add_entry(new Entry("junkbarcode", "junklocation"));
-        } else {
-            //textView.setText("No network connection available.");
-        }
-        
-    }
-	
-	
-    private class DownloadHtmlTask extends AsyncTask<Void, Void, String> {
 
-    	private String barcode;
-        private DatabaseHandler db;
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
 
-        public DownloadHtmlTask(String barcode, DatabaseHandler db)
-        {
-            this.barcode = barcode;
-            this.db = db;
-        }
-    	
-    	
-        @Override
-        protected String doInBackground(final Void... unused) {
-            try {
+		Bundle bundle = getIntent().getExtras();
+		String barcode = bundle.getString("barcode");
 
-            	String targetURL = "http://librarylab.law.harvard.edu/dev/matt/public/wtwba/add.php";
-            	String urlParameters = null;
-            	
-            	SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
-                String user_name = settings.getString("user_name", "");
-            	
-            	try {
-        			urlParameters = "user=" + URLEncoder.encode(user_name, "UTF-8") +
-        							"&barcode=" + URLEncoder.encode(this.barcode, "UTF-8");
-        		} catch (UnsupportedEncodingException e1) {
-        			e1.printStackTrace();
-        		}
-            	
-            	Log.w("wtwba", urlParameters);
-            	
-            	return excutePost(targetURL, urlParameters);
-            } catch (Exception e) {
-            	Log.w("wtwba", e.getMessage());
-                return getResources().getString(R.string.connection_error);
-            }
-        }
+		ConnectivityManager connMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+		NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
+		if (networkInfo != null && networkInfo.isConnected()) {
+			DatabaseHandler db = new DatabaseHandler(this);
+			new SendItemTask(barcode, db).execute();
+		} else {
+			Intent intent = new Intent(this, TerminalErrorActivity.class);
+			startActivity(intent);
+		}
 
-        @Override
-        protected void onPostExecute(String result) {
-            //setContentView(R.layout.activity_item_details);
-            
-            String title = null;
-            String due_date = null;
-            String isbn = null;
-            Log.w("response from add", result);
-            
-            try {
+	}
+
+	private class SendItemTask extends AsyncTask<Void, Void, String> {
+		
+		// Given a barcode, get the item details and save them locally and remotely.
+		// If we can't get item details because of no internet connection, display an error
+		
+		private String barcode;
+		private DatabaseHandler db;
+
+		public SendItemTask(String barcode, DatabaseHandler db) {
+			this.barcode = barcode;
+			this.db = db;
+		}
+
+		@Override
+		protected String doInBackground(final Void... unused) {
+			try {
+
+				String targetURL = "http://librarylab.law.harvard.edu/dev/matt/public/wtwba/add.php";
+				String urlParameters = null;
+
+				SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+				String user_name = settings.getString("user_name", "");
+
+				try {
+					urlParameters = "user="
+							+ URLEncoder.encode(user_name, "UTF-8")
+							+ "&barcode="
+							+ URLEncoder.encode(this.barcode, "UTF-8");
+				} catch (UnsupportedEncodingException e1) {
+					e1.printStackTrace();
+				}
+
+
+				return excutePost(targetURL, urlParameters);
+			} catch (Exception e) {
+				return getResources().getString(R.string.connection_error);
+			}
+		}
+
+		@Override
+		protected void onPostExecute(String result) {
+			// setContentView(R.layout.activity_item_details);
+
+			String title = null;
+			String due_date = null;
+			String isbn = null;
+
+			try {
 				JSONObject myjson = new JSONObject(result);
 
 				title = myjson.getString("title");
 				due_date = myjson.getString("due");
 				isbn = myjson.getString("isbn");
-				
+
 				if (title == "null") {
-					Log.w("title was null", title);
-					Intent intent = new Intent(getBaseContext(), ScanErrorActivity.class);
-		    		startActivity(intent);
+					Intent intent = new Intent(getBaseContext(),
+							ScanErrorActivity.class);
+					startActivity(intent);
 				} else {
 					db.add_item(new Item(this.barcode, title, due_date));
-					
-					Log.w("adding, trying isbn", String.valueOf(isbn.length()));
-					
+
 					// If we get an isbn back, let's try to download the cover
-					if (isbn != null && isbn.length() >0) {
-						new DownloadCoverTask(isbn, this.barcode, title, due_date).execute();
+					if (isbn != null && isbn.length() > 0) {
+						new DownloadCoverTask(isbn, this.barcode, title,
+								due_date).execute();
 					} else {
-						Intent intent = new Intent(getBaseContext(), ItemFoundActivity.class);
+						Intent intent = new Intent(getBaseContext(),
+								ItemFoundActivity.class);
 						intent.putExtra("barcode", this.barcode);
 						intent.putExtra("title", title);
 						intent.putExtra("due", due_date);
-			    		startActivity(intent);
+						startActivity(intent);
 					}
 				}
-				
+
 			} catch (JSONException e) {
 				Log.w("json error", e.toString());
-				Intent intent = new Intent(getBaseContext(), ScanErrorActivity.class);
-	    		startActivity(intent);
+				Intent intent = new Intent(getBaseContext(),
+						ScanErrorActivity.class);
+				startActivity(intent);
 			}
-            
-            //Intent intent = new Intent(getBaseContext(), ConfirmAddActivity.class);
-    		//startActivity(intent);
-            
-        }
-        
-        
-        // Thanks http://www.xyzws.com/Javafaq/how-to-use-httpurlconnection-post-data-to-web-server/139
-        public String excutePost(String targetURL, String urlParameters)
-        {
-          URL url;
-          HttpURLConnection connection = null;
-          
-          try {
-            //Create connection
-            url = new URL(targetURL);
-            connection = (HttpURLConnection)url.openConnection();
-            connection.setRequestMethod("POST");
-            connection.setRequestProperty("Content-Type", 
-                 "application/x-www-form-urlencoded");
-      			
-            connection.setRequestProperty("Content-Length", "" + 
-                     Integer.toString(urlParameters.getBytes().length));
-            connection.setRequestProperty("Content-Language", "en-US");  
-      			
-            connection.setUseCaches (false);
-            connection.setDoInput(true);
-            connection.setDoOutput(true);
+		}
 
-            //Send request
-            DataOutputStream wr = new DataOutputStream (
-                        connection.getOutputStream ());
-            wr.writeBytes (urlParameters);
-            wr.flush ();
-            wr.close ();
+		// Thanks
+		// http://www.xyzws.com/Javafaq/how-to-use-httpurlconnection-post-data-to-web-server/139
+		public String excutePost(String targetURL, String urlParameters) {
+			URL url;
+			HttpURLConnection connection = null;
 
-            //Get Response	
-            InputStream is = connection.getInputStream();
-            BufferedReader rd = new BufferedReader(new InputStreamReader(is));
-            String line;
-            StringBuffer response = new StringBuffer(); 
-            while((line = rd.readLine()) != null) {
-              response.append(line);
-              response.append('\r');
-            }
-            rd.close();
-            
-            Log.w("wtwba", response.toString());
-            return response.toString();
+			try {
+				// Create connection
+				url = new URL(targetURL);
+				connection = (HttpURLConnection) url.openConnection();
+				connection.setRequestMethod("POST");
+				connection.setRequestProperty("Content-Type",
+						"application/x-www-form-urlencoded");
 
-          } catch (Exception e) {
+				connection.setRequestProperty("Content-Length",
+						"" + Integer.toString(urlParameters.getBytes().length));
+				connection.setRequestProperty("Content-Language", "en-US");
 
-            e.printStackTrace();
-            return null;
+				connection.setUseCaches(false);
+				connection.setDoInput(true);
+				connection.setDoOutput(true);
 
-          } finally {
+				// Send request
+				DataOutputStream wr = new DataOutputStream(
+						connection.getOutputStream());
+				wr.writeBytes(urlParameters);
+				wr.flush();
+				wr.close();
 
-            if(connection != null) {
-              connection.disconnect(); 
-            }
-          }
-        }
-        
-        
-    }
-    
-    private class DownloadCoverTask extends AsyncTask<Void, Void, String> {
+				// Get Response
+				InputStream is = connection.getInputStream();
+				BufferedReader rd = new BufferedReader(
+						new InputStreamReader(is));
+				String line;
+				StringBuffer response = new StringBuffer();
+				while ((line = rd.readLine()) != null) {
+					response.append(line);
+					response.append('\r');
+				}
+				rd.close();
 
-    	private String isbn;
-    	private String barcode;
-    	private String title;
-    	private String due_date;
-    	
+				return response.toString();
 
-        public DownloadCoverTask(String isbn, String barcode, String title, String due_date)
-        {
-        	this.isbn = isbn;
-            this.barcode = barcode;
-            this.title = title;
-            this.due_date= due_date;
-        }
-    	
-    	
-        @Override
-        protected String doInBackground(final Void... unused) {
-        	// Build our HTTP call, pass it off to executePost for execution
-            try {
+			} catch (Exception e) {
 
-            	String targetURL = "http://covers.openlibrary.org/b/isbn/" + this.isbn + "-M.jpg";
-            	String urlParameters = "";
-            	
-            	
-            	
-            	return excutePost(targetURL, urlParameters);
-            } catch (Exception e) {
-            	Log.w("wtwba cover load", e.getMessage());
-                return getResources().getString(R.string.connection_error);
-            }
-        }
+				e.printStackTrace();
+				return null;
 
-        @Override
-        protected void onPostExecute(String result) {
-            setContentView(R.layout.activity_item_details);
-            Log.w("wtwba", result);
-            
-            
-            Intent intent = new Intent(getBaseContext(), ItemFoundActivity.class);
-            intent.putExtra("barcode", this.barcode);
+			} finally {
+
+				if (connection != null) {
+					connection.disconnect();
+				}
+			}
+		}
+
+	}
+
+	private class DownloadCoverTask extends AsyncTask<Void, Void, String> {
+
+		private String isbn;
+		private String barcode;
+		private String title;
+		private String due_date;
+
+		public DownloadCoverTask(String isbn, String barcode, String title,
+				String due_date) {
+			this.isbn = isbn;
+			this.barcode = barcode;
+			this.title = title;
+			this.due_date = due_date;
+		}
+
+		@Override
+		protected String doInBackground(final Void... unused) {
+			// Build our HTTP call, pass it off to executePost for execution
+			try {
+
+				String targetURL = "http://covers.openlibrary.org/b/isbn/"
+						+ this.isbn + "-M.jpg";
+				String urlParameters = "";
+
+				return excutePost(targetURL, urlParameters);
+			} catch (Exception e) {
+				Log.w("wtwba cover load error", e.getMessage());
+				return getResources().getString(R.string.connection_error);
+			}
+		}
+
+		@Override
+		protected void onPostExecute(String result) {
+			setContentView(R.layout.activity_item_details);
+
+			Intent intent = new Intent(getBaseContext(), ItemFoundActivity.class);
+			intent.putExtra("barcode", this.barcode);
 			intent.putExtra("title", this.title);
 			intent.putExtra("due", this.due_date);
-    		startActivity(intent);
-            
-            
-        }
-        
-        
-        // Thanks http://www.xyzws.com/Javafaq/how-to-use-httpurlconnection-post-data-to-web-server/139
-        public String excutePost(String targetURL, String urlParameters) {
-          
-          Log.w("ol url", targetURL);
-          try {
-        	    
-        	  //HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
-        	  URL url = new URL(targetURL);
-        	  URLConnection connection = url.openConnection();
-        	  HttpURLConnection httpConnection = (HttpURLConnection) connection;
-        	  httpConnection.setInstanceFollowRedirects( false );
-        	  httpConnection.setRequestMethod("GET");
-        	    //urlConnection.setDoOutput(true);
-        	  httpConnection.connect();
+			startActivity(intent);
 
-        	  
-        	  String location = httpConnection.getHeaderField("Location");
-        	  
-        	  
-        	  
-        	  // Open Library will redirect us to a found cover
-        	  // If it didn't redirect, it serves up a 1x1 placeholder
-        	  if (location != null && location.length() > 0){
-        		  
-        		  URL redirected_url = new URL(location);
-            	  URLConnection redirected_connection = redirected_url.openConnection();
-            	  HttpURLConnection redirected_httpConnection = (HttpURLConnection) redirected_connection;
-            	  redirected_httpConnection.setRequestMethod("GET");
-            	  redirected_httpConnection.connect();  
-        		  
-        	    FileOutputStream fos = openFileOutput(this.barcode, Context.MODE_PRIVATE);
-        	    InputStream inputStream = redirected_httpConnection.getInputStream();
+		}
 
-        	    byte[] buffer = new byte[1024];
-        	    int bufferLength = 0;
+		// Thanks
+		// http://www.xyzws.com/Javafaq/how-to-use-httpurlconnection-post-data-to-web-server/139
+		public String excutePost(String targetURL, String urlParameters) {
 
-        	    while ( (bufferLength = inputStream.read(buffer)) > 0 ) {
-        	    	fos.write(buffer, 0, bufferLength);
-        	    }
-        	    fos.close();
-        	    return "okay";
-        	  }
-        	} catch (MalformedURLException e) {
-        	        e.printStackTrace();
-        	        
-        	} catch (IOException e) {
-        	        e.printStackTrace();
-        	        
-        	}
-        	
-        	
-        return "nope";	
-        	
-        }
-    }
+			try {
+
+				URL url = new URL(targetURL);
+				URLConnection connection = url.openConnection();
+				HttpURLConnection httpConnection = (HttpURLConnection) connection;
+				httpConnection.setInstanceFollowRedirects(false);
+				httpConnection.setRequestMethod("GET");
+				httpConnection.connect();
+
+				String location = httpConnection.getHeaderField("Location");
+
+				// Open Library will redirect us to a found cover
+				// If it didn't redirect, it serves up a 1x1 placeholder
+				if (location != null && location.length() > 0) {
+
+					URL redirected_url = new URL(location);
+					URLConnection redirected_connection = redirected_url
+							.openConnection();
+					HttpURLConnection redirected_httpConnection = (HttpURLConnection) redirected_connection;
+					redirected_httpConnection.setRequestMethod("GET");
+					redirected_httpConnection.connect();
+
+					FileOutputStream fos = openFileOutput(this.barcode,
+							Context.MODE_PRIVATE);
+					InputStream inputStream = redirected_httpConnection
+							.getInputStream();
+
+					byte[] buffer = new byte[1024];
+					int bufferLength = 0;
+
+					while ((bufferLength = inputStream.read(buffer)) > 0) {
+						fos.write(buffer, 0, bufferLength);
+					}
+					fos.close();
+					return "okay";
+				}
+			} catch (MalformedURLException e) {
+				e.printStackTrace();
+
+			} catch (IOException e) {
+				e.printStackTrace();
+
+			}
+
+			return "nope";
+
+		}
+	}
 
 }
-    
-    

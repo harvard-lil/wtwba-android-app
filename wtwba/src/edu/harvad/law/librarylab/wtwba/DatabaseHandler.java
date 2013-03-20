@@ -1,6 +1,5 @@
 package edu.harvad.law.librarylab.wtwba;
 
-import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,7 +8,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 
 // Thanks to http://www.androidhive.info/2011/11/android-sqlite-database-tutorial/
 
@@ -25,8 +23,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	// Table names
 	private static final String TABLE_ITEMS = "ITEMS";
 	private static final String TABLE_ENTRIES = "ENTRIES";
-	private static final String TABLE_LOCATIONS= "LOCATIONS";
-
+	private static final String TABLE_LOCATIONS = "LOCATIONS";
 
 	// Common table columns names
 	private static final String KEY_ID = "id";
@@ -45,10 +42,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	// Locations table columns names
 	private static final String KEY_LOCATIONNAME = "locationname";
 
-
 	// Our location name (used to populate the db on creation)
-	static final String[] LOCATIONS = new String[] { "Cafe Off-Campus", "Cafe On-Campus", "Home", "Library", 
-		"Other Off-Campus", "Other On-Campus", "Student Lounge", "Work"};
+	static final String[] LOCATIONS = new String[] { "Cafe Off-Campus",
+			"Cafe On-Campus", "Home", "Library", "Other Off-Campus",
+			"Other On-Campus", "Student Lounge", "Work" };
 
 	public DatabaseHandler(Context context) {
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -59,8 +56,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	public void onCreate(SQLiteDatabase db) {
 		String CREATE_ITEMS_TABLE = "CREATE TABLE " + TABLE_ITEMS + "("
 				+ KEY_ID + " INTEGER PRIMARY KEY," + KEY_BARCODE + " TEXT,"
-				+ KEY_TITLE + " TEXT," + KEY_DUE + " TEXT," 
-				+ KEY_LASTUSED + " TEXT," + KEY_NUMUSES  + " INTEGER" + ")";
+				+ KEY_TITLE + " TEXT," + KEY_DUE + " TEXT," + KEY_LASTUSED
+				+ " TEXT," + KEY_NUMUSES + " INTEGER" + ")";
 		db.execSQL(CREATE_ITEMS_TABLE);
 
 		String CREATE_ENTRIES_TABLE = "CREATE TABLE " + TABLE_ENTRIES + "("
@@ -69,8 +66,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		db.execSQL(CREATE_ENTRIES_TABLE);
 
 		String CREATE_LOCATIONS_TABLE = "CREATE TABLE " + TABLE_LOCATIONS + "("
-				+ KEY_ID + " INTEGER PRIMARY KEY," + KEY_LOCATIONNAME + " TEXT,"
-				+ KEY_NUMUSES  + " INTEGER " + ")";
+				+ KEY_ID + " INTEGER PRIMARY KEY," + KEY_LOCATIONNAME
+				+ " TEXT," + KEY_NUMUSES + " INTEGER " + ")";
 		db.execSQL(CREATE_LOCATIONS_TABLE);
 
 		// Populate the locations table
@@ -80,11 +77,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 			values.put(KEY_NUMUSES, 0);
 
 			db.insert(TABLE_LOCATIONS, null, values);
-
-			Log.w("inserting location data", location);
-			//        	String populate_statement = "INSERT INTO " + TABLE_LOCATIONS + " VALUES (null, '" + location + "', 0)";
-			//        	db.execSQL(populate_statement);
-
 		}
 
 	}
@@ -105,10 +97,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	 * All CRUD(Create, Read, Update, Delete) Operations
 	 */
 
-	////////
+	// //////
 	// Item
-	////////
-
+	// //////
 
 	// Adding new Item
 	void add_item(Item item) {
@@ -121,25 +112,26 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		values.put(KEY_LASTUSED, item.get_last_used());
 		values.put(KEY_NUMUSES, item.get_num_uses());
 
-
-		Log.w("wtwba inserting db", item.get_barcode() + ", " + item.get_title() + ", " + item.get_due_date() + ", " + item.get_last_used() + ", " + item.get_num_uses());
-
-
 		// Inserting Row
 		db.insert(TABLE_ITEMS, null, values);
 		db.close(); // Closing database connection
 	}
 
-	// Getting single contact
+	// Getting single item
 	Item get_item(int id) {
 		SQLiteDatabase db = this.getReadableDatabase();
 
-		Cursor cursor = db.query(TABLE_ITEMS, new String[] { KEY_ID, KEY_BARCODE, KEY_TITLE, KEY_DUE, KEY_LASTUSED, KEY_NUMUSES }, KEY_ID + "=?", new String[] { String.valueOf(id) }, null, null, null); //last one is order_by
-		if (cursor != null){
+		Cursor cursor = db.query(TABLE_ITEMS, new String[] { KEY_ID,
+				KEY_BARCODE, KEY_TITLE, KEY_DUE, KEY_LASTUSED, KEY_NUMUSES },
+				KEY_ID + "=?", new String[] { String.valueOf(id) }, null, null,
+				null); // last one is order_by
+		if (cursor != null) {
 			cursor.moveToFirst();
 		}
 
-		Item item = new Item(Integer.parseInt(cursor.getString(0)), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4), Integer.parseInt(cursor.getString(5)));
+		Item item = new Item(Integer.parseInt(cursor.getString(0)),
+				cursor.getString(1), cursor.getString(2), cursor.getString(3),
+				cursor.getString(4), Integer.parseInt(cursor.getString(5)));
 
 		return item;
 	}
@@ -148,20 +140,28 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	Item get_item_by_barcode(String barcode) {
 		SQLiteDatabase db = this.getReadableDatabase();
 
-		Cursor cursor = db.query(TABLE_ITEMS, new String[] { KEY_ID, KEY_BARCODE, KEY_TITLE, KEY_DUE, KEY_LASTUSED, KEY_NUMUSES }, KEY_BARCODE + "=?", new String[] { barcode }, null, null, null); //last one is order_by
-		if (cursor != null){
+		Cursor cursor = db.query(TABLE_ITEMS, new String[] { KEY_ID,
+				KEY_BARCODE, KEY_TITLE, KEY_DUE, KEY_LASTUSED, KEY_NUMUSES },
+				KEY_BARCODE + "=?", new String[] { barcode }, null, null, null); // last
+																					// one
+																					// is
+																					// order_by
+		if (cursor != null) {
 			cursor.moveToFirst();
 		}
-		Item item = new Item(Integer.parseInt(cursor.getString(0)), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4), Integer.parseInt(cursor.getString(5)));
+		Item item = new Item(Integer.parseInt(cursor.getString(0)),
+				cursor.getString(1), cursor.getString(2), cursor.getString(3),
+				cursor.getString(4), Integer.parseInt(cursor.getString(5)));
 
 		return item;
 	}
 
-	// Getting All items
+	// Getting all items
 	public List<Item> get_all_items() {
 		List<Item> item_list = new ArrayList<Item>();
 		// Select All Query
-		String selectQuery = "SELECT  * FROM " + TABLE_ITEMS + " ORDER BY " + KEY_NUMUSES + " DESC";
+		String selectQuery = "SELECT  * FROM " + TABLE_ITEMS + " ORDER BY "
+				+ KEY_NUMUSES + " DESC";
 
 		SQLiteDatabase db = this.getWritableDatabase();
 		Cursor cursor = db.rawQuery(selectQuery, null);
@@ -176,8 +176,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 				item.set_due_date(cursor.getString(3));
 				item.set_last_used(cursor.getString(4));
 				item.set_num_uses(Integer.valueOf(cursor.getString(5)));
-
-				//Log.w("in handler get all item", cursor.getString(0));
 
 				// Adding contact to list
 				item_list.add(item);
@@ -214,28 +212,15 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
 	// Deleting single item by barcode
 	public void delete_item_by_barcode(String barcode) {
-		Log.w("db", "trying to delete by barcode");
 		SQLiteDatabase db = this.getWritableDatabase();
-		db.delete(TABLE_ITEMS, KEY_BARCODE + " = ?",
-				new String[] { barcode });
+		db.delete(TABLE_ITEMS, KEY_BARCODE + " = ?", new String[] { barcode });
 		db.close();
 	}
 
-	// Getting contacts Count
-	/*public int getContactsCount() {
-	      String countQuery = "SELECT  * FROM " + TABLE_CONTACTS;
-	      SQLiteDatabase db = this.getReadableDatabase();
-	      Cursor cursor = db.rawQuery(countQuery, null);
-	      cursor.close();
 
-	      // return count
-	      return cursor.getCount();
-	  }*/
-
-
-	////////
+	// //////
 	// Entry
-	////////
+	// //////
 
 	// Adding new Entry
 	void add_entry(Entry entry) {
@@ -261,7 +246,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		if (cursor != null)
 			cursor.moveToFirst();
 
-		Entry entry = new Entry(Integer.parseInt(cursor.getString(0)), cursor.getString(1), cursor.getString(2), Timestamp.valueOf(cursor.getString(3)));
+		Entry entry = new Entry(Integer.parseInt(cursor.getString(0)),
+				cursor.getString(1), cursor.getString(2), cursor.getString(3));
 
 		return entry;
 	}
@@ -282,7 +268,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 				entry.set_id(Integer.parseInt(cursor.getString(0)));
 				entry.set_barcode(cursor.getString(1));
 				entry.set_location(cursor.getString(2));
-				entry.setDate( Timestamp.valueOf(cursor.getString(3)));
+				entry.setDate(cursor.getString(3));
 				// Adding contact to list
 				entry_list.add(entry);
 			} while (cursor.moveToNext());
@@ -292,19 +278,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		return entry_list;
 	}
 
-	// Updating single contact
-	/*public int updateContact(Contact contact) {
-        SQLiteDatabase db = this.getWritableDatabase();
-
-        ContentValues values = new ContentValues();
-        values.put(KEY_NAME, contact.getName());
-        values.put(KEY_PH_NO, contact.getPhoneNumber());
-
-        // updating row
-        return db.update(TABLE_CONTACTS, values, KEY_ID + " = ?",
-                new String[] { String.valueOf(contact.getID()) });
-    }*/
-
 	// Deleting single contact
 	public void delete_entry(Entry entry) {
 		SQLiteDatabase db = this.getWritableDatabase();
@@ -313,33 +286,21 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		db.close();
 	}
 
-	// Getting contacts Count
-	/*public int getContactsCount() {
-        String countQuery = "SELECT  * FROM " + TABLE_CONTACTS;
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery(countQuery, null);
-        cursor.close();
 
-        // return count
-        return cursor.getCount();
-    }*/
-
-
-	////////
+	// //////
 	// Locations
-	////////
-
+	// //////
 
 	// Getting All locations
 	public String[] get_all_locations() {
 		// Select All Query
-		String selectQuery = "SELECT " + KEY_LOCATIONNAME + " FROM " + TABLE_LOCATIONS + " ORDER BY " + KEY_NUMUSES + " DESC";
+		String selectQuery = "SELECT " + KEY_LOCATIONNAME + " FROM "
+				+ TABLE_LOCATIONS + " ORDER BY " + KEY_NUMUSES + " DESC";
 
 		SQLiteDatabase db = this.getWritableDatabase();
 		Cursor cursor = db.rawQuery(selectQuery, null);
 
 		List<String> sorted_locations = new ArrayList<String>();
-
 
 		// looping through all rows and adding to list
 		if (cursor.moveToFirst()) {
@@ -348,35 +309,31 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 			} while (cursor.moveToNext());
 		}
 
-		Log.w("num locations", String.valueOf(sorted_locations.size()));
-
+		
 		return sorted_locations.toArray(new String[sorted_locations.size()]);
 	}
 
-	// Updating single location, well, really just incrementing it's numuses count
+	// Updating single location, well, really just incrementing it's numuses
+	// count. This is a special case of update.
 	public int update_location(String location_name) {
 		SQLiteDatabase db = this.getWritableDatabase();
 
 		Cursor cursor = db.query(TABLE_LOCATIONS, new String[] { KEY_ID,
-				KEY_LOCATIONNAME, KEY_NUMUSES}, KEY_LOCATIONNAME + "=?",
+				KEY_LOCATIONNAME, KEY_NUMUSES }, KEY_LOCATIONNAME + "=?",
 				new String[] { location_name }, null, null, null, null);
 		if (cursor != null) {
 			cursor.moveToFirst();
 		}
 
 		int num_uses = Integer.parseInt(cursor.getString(2));
-		Log.w("updating location", location_name);
-		Log.w("location num uses before", String.valueOf(num_uses));
 		num_uses = num_uses + 1;
-
-		Log.w("location num uses after", String.valueOf(num_uses++));
 
 		ContentValues values = new ContentValues();
 		values.put(KEY_LOCATIONNAME, location_name);
 		values.put(KEY_NUMUSES, num_uses);
 
 		// updating row
-		return db.update(TABLE_LOCATIONS, values, KEY_LOCATIONNAME+ " = ?",
+		return db.update(TABLE_LOCATIONS, values, KEY_LOCATIONNAME + " = ?",
 				new String[] { location_name });
 	}
 
